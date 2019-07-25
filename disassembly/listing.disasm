@@ -1,0 +1,2576 @@
+Disassembly Listing for Railroad
+Generated From:
+C:/Users/tbriggs/MPLABXProjects/Railroad.X/dist/default/debug/Railroad.X.debug.elf
+Jul 25, 2019 3:26:18 PM
+
+---  c:/users/tbriggs/mplabxprojects/railroad.x/mcc_generated_files/tmr2.c  -----------------------------
+1:                   
+2:                   /**
+3:                     TMR2 Generated Driver API Source File 
+4:                   
+5:                     @Company
+6:                       Microchip Technology Inc.
+7:                   
+8:                     @File Name
+9:                       tmr2.c
+10:                  
+11:                    @Summary
+12:                      This is the generated source file for the TMR2 driver using PIC32MX MCUs
+13:                  
+14:                    @Description
+15:                      This source file provides APIs for driver for TMR2. 
+16:                      Generation Information : 
+17:                          Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
+18:                          Device            :  PIC32MX130F064B
+19:                          Driver Version    :  0.5
+20:                      The generated drivers are tested against the following:
+21:                          Compiler          :  XC32 1.42
+22:                          MPLAB 	          :  MPLAB X 3.55
+23:                  */
+24:                  
+25:                  /*
+26:                      (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+27:                      software and any derivatives exclusively with Microchip products.
+28:                  
+29:                      THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+30:                      EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+31:                      WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+32:                      PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+33:                      WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+34:                  
+35:                      IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+36:                      INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+37:                      WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+38:                      BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+39:                      FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+40:                      ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+41:                      THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+42:                  
+43:                      MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+44:                      TERMS.
+45:                  */
+46:                  
+47:                  /**
+48:                    Section: Included Files
+49:                  */
+50:                  
+51:                  #include <xc.h>
+52:                  #include "tmr2.h"
+53:                  #include "../handlers.h"
+54:                  
+55:                  /**
+56:                    Section: Data Type Definitions
+57:                  */
+58:                  
+59:                  /** TMR Driver Hardware Instance Object
+60:                  
+61:                    @Summary
+62:                      Defines the object required for the maintainence of the hardware instance.
+63:                  
+64:                    @Description
+65:                      This defines the object required for the maintainence of the hardware
+66:                      instance. This object exists once per hardware instance of the peripheral.
+67:                  
+68:                    Remarks:
+69:                      None.
+70:                  */
+71:                  
+72:                  typedef struct _TMR_OBJ_STRUCT
+73:                  {
+74:                      /* Timer Elapsed */
+75:                      bool                                                    timerElapsed;
+76:                      /*Software Counter value*/
+77:                      uint8_t                                                 count;
+78:                  
+79:                  } TMR_OBJ;
+80:                  
+81:                  static TMR_OBJ tmr2_obj;
+82:                  
+83:                  /**
+84:                    Section: Driver Interface
+85:                  */
+86:                  
+87:                  
+88:                  void TMR2_Initialize (void)
+89:                  {
+9D000620  27BDFFF8   ADDIU SP, SP, -8
+9D000624  AFBE0004   SW FP, 4(SP)
+9D000628  03A0F021   ADDU FP, SP, ZERO
+90:                      // TMR3 0; 
+91:                      TMR3 = 0x0;
+9D00062C  3C02BF80   LUI V0, -16512
+9D000630  AC400A10   SW ZERO, 2576(V0)
+92:                      // TMR2 0; 
+93:                      TMR2 = 0x0;
+9D000634  3C02BF80   LUI V0, -16512
+9D000638  AC400810   SW ZERO, 2064(V0)
+94:                      // PR3 0; 
+95:                      PR3 = 0x0;
+9D00063C  3C02BF80   LUI V0, -16512
+9D000640  AC400A20   SW ZERO, 2592(V0)
+96:                      // Period = 0.01 s; Frequency = 1000000 Hz; PR2 10000; 
+97:                      PR2 = 0x2710;
+9D000644  3C02BF80   LUI V0, -16512
+9D000648  24032710   ADDIU V1, ZERO, 10000
+9D00064C  AC430820   SW V1, 2080(V0)
+98:                      // TCKPS 1:1; T32 32 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
+99:                      T2CON = 0x8008;
+9D000650  3C02BF80   LUI V0, -16512
+9D000654  34038008   ORI V1, ZERO, -32760
+9D000658  AC430800   SW V1, 2048(V0)
+100:                 
+101:                     IFS0CLR= 1 << _IFS0_T3IF_POSITION;
+9D00065C  3C02BF88   LUI V0, -16504
+9D000660  24034000   ADDIU V1, ZERO, 16384
+9D000664  AC431034   SW V1, 4148(V0)
+102:                     IEC0bits.T3IE = true;
+9D000668  3C03BF88   LUI V1, -16504
+9D00066C  8C621060   LW V0, 4192(V1)
+9D000670  24040001   ADDIU A0, ZERO, 1
+9D000674  7C827384   INS V0, A0, 14, 1
+9D000678  AC621060   SW V0, 4192(V1)
+103:                 	
+104:                     tmr2_obj.timerElapsed = false;
+9D00067C  A3808010   SB ZERO, -32752(GP)
+105:                 
+106:                 }
+9D000680  03C0E821   ADDU SP, FP, ZERO
+9D000684  8FBE0004   LW FP, 4(SP)
+9D000688  27BD0008   ADDIU SP, SP, 8
+9D00068C  03E00008   JR RA
+9D000690  00000000   NOP
+107:                 
+108:                 void __ISR(_TIMER_3_VECTOR, IPL1AUTO) _T3Interrupt (  )
+109:                 {
+9D000694  415DE800   RDPGPR SP, SP
+9D000698  401B7000   MFC0 K1, EPC
+9D00069C  401A6002   MFC0 K0, SRSCtl
+9D0006A0  27BDFF88   ADDIU SP, SP, -120
+9D0006A4  AFBB0074   SW K1, 116(SP)
+9D0006A8  401B6000   MFC0 K1, Status
+9D0006AC  AFBA006C   SW K0, 108(SP)
+9D0006B0  AFBB0070   SW K1, 112(SP)
+9D0006B4  7C1B7844   INS K1, ZERO, 1, 15
+9D0006B8  377B0400   ORI K1, K1, 1024
+9D0006BC  409B6000   MTC0 K1, Status
+9D0006C0  AFA3001C   SW V1, 28(SP)
+9D0006C4  AFA20018   SW V0, 24(SP)
+9D0006C8  8FA3006C   LW V1, 108(SP)
+9D0006CC  3063000F   ANDI V1, V1, 15
+9D0006D0  14600012   BNE V1, ZERO, 0x9D00071C
+9D0006D4  00000000   NOP
+9D0006D8  AFBF005C   SW RA, 92(SP)
+9D0006DC  AFBE0058   SW FP, 88(SP)
+9D0006E0  AFB90054   SW T9, 84(SP)
+9D0006E4  AFB80050   SW T8, 80(SP)
+9D0006E8  AFAF004C   SW T7, 76(SP)
+9D0006EC  AFAE0048   SW T6, 72(SP)
+9D0006F0  AFAD0044   SW T5, 68(SP)
+9D0006F4  AFAC0040   SW T4, 64(SP)
+9D0006F8  AFAB003C   SW T3, 60(SP)
+9D0006FC  AFAA0038   SW T2, 56(SP)
+9D000700  AFA90034   SW T1, 52(SP)
+9D000704  AFA80030   SW T0, 48(SP)
+9D000708  AFA7002C   SW A3, 44(SP)
+9D00070C  AFA60028   SW A2, 40(SP)
+9D000710  AFA50024   SW A1, 36(SP)
+9D000714  AFA40020   SW A0, 32(SP)
+9D000718  AFA10014   SW AT, 20(SP)
+9D00071C  00000000   NOP
+9D000720  00001012   MFLO V0
+9D000724  AFA20064   SW V0, 100(SP)
+9D000728  00001810   MFHI V1
+9D00072C  AFA30060   SW V1, 96(SP)
+9D000730  03A0F021   ADDU FP, SP, ZERO
+110:                 
+111:                     //***User Area Begin
+112:                 
+113:                     // ticker function call;
+114:                     // ticker is 1 -> Callback function gets called everytime this ISR executes
+115:                     handle_timer( );
+9D000734  0F400102   JAL handle_timer
+9D000738  00000000   NOP
+116:                 
+117:                     //***User Area End
+118:                 
+119:                     tmr2_obj.count++;
+9D00073C  93828011   LBU V0, -32751(GP)
+9D000740  24420001   ADDIU V0, V0, 1
+9D000744  304200FF   ANDI V0, V0, 255
+9D000748  A3828011   SB V0, -32751(GP)
+120:                     tmr2_obj.timerElapsed = true;
+9D00074C  24020001   ADDIU V0, ZERO, 1
+9D000750  A3828010   SB V0, -32752(GP)
+121:                     IFS0CLR= 1 << _IFS0_T3IF_POSITION;
+9D000754  3C02BF88   LUI V0, -16504
+9D000758  24034000   ADDIU V1, ZERO, 16384
+9D00075C  AC431034   SW V1, 4148(V0)
+122:                 }
+9D000760  03C0E821   ADDU SP, FP, ZERO
+9D000764  8FA20064   LW V0, 100(SP)
+9D000768  00400013   MTLO V0
+9D00076C  8FA30060   LW V1, 96(SP)
+9D000770  00600011   MTHI V1
+9D000774  8FA2006C   LW V0, 108(SP)
+9D000778  3042000F   ANDI V0, V0, 15
+9D00077C  14400014   BNE V0, ZERO, 0x9D0007D0
+9D000780  00000000   NOP
+9D000784  8FBF005C   LW RA, 92(SP)
+9D000788  8FBE0058   LW FP, 88(SP)
+9D00078C  8FB90054   LW T9, 84(SP)
+9D000790  8FB80050   LW T8, 80(SP)
+9D000794  8FAF004C   LW T7, 76(SP)
+9D000798  8FAE0048   LW T6, 72(SP)
+9D00079C  8FAD0044   LW T5, 68(SP)
+9D0007A0  8FAC0040   LW T4, 64(SP)
+9D0007A4  8FAB003C   LW T3, 60(SP)
+9D0007A8  8FAA0038   LW T2, 56(SP)
+9D0007AC  8FA90034   LW T1, 52(SP)
+9D0007B0  8FA80030   LW T0, 48(SP)
+9D0007B4  8FA7002C   LW A3, 44(SP)
+9D0007B8  8FA60028   LW A2, 40(SP)
+9D0007BC  8FA50024   LW A1, 36(SP)
+9D0007C0  8FA40020   LW A0, 32(SP)
+9D0007C4  8FA3001C   LW V1, 28(SP)
+9D0007C8  8FA20018   LW V0, 24(SP)
+9D0007CC  8FA10014   LW AT, 20(SP)
+9D0007D0  00000000   NOP
+9D0007D4  41606000   DI ZERO
+9D0007D8  000000C0   EHB
+9D0007DC  8FBA0074   LW K0, 116(SP)
+9D0007E0  8FBB0070   LW K1, 112(SP)
+9D0007E4  409A7000   MTC0 K0, EPC
+9D0007E8  8FBA006C   LW K0, 108(SP)
+9D0007EC  27BD0078   ADDIU SP, SP, 120
+9D0007F0  409A6002   MTC0 K0, SRSCtl
+9D0007F4  41DDE800   WRPGPR SP, SP
+9D0007F8  409B6000   MTC0 K1, Status
+9D0007FC  42000018   ERET
+123:                 
+124:                 void TMR2_Period32BitSet( uint32_t value )
+125:                 {
+9D000800  27BDFFF8   ADDIU SP, SP, -8
+9D000804  AFBE0004   SW FP, 4(SP)
+9D000808  03A0F021   ADDU FP, SP, ZERO
+9D00080C  AFC40008   SW A0, 8(FP)
+126:                     /* Update the counter values */
+127:                     PR2 = (value & 0x0000FFFF);
+9D000810  8FC20008   LW V0, 8(FP)
+9D000814  3043FFFF   ANDI V1, V0, -1
+9D000818  3C02BF80   LUI V0, -16512
+9D00081C  AC430820   SW V1, 2080(V0)
+128:                     PR3 = ((value & 0xFFFF0000)>>16);
+9D000820  8FC20008   LW V0, 8(FP)
+9D000824  00021C02   SRL V1, V0, 16
+9D000828  3C02BF80   LUI V0, -16512
+9D00082C  AC430A20   SW V1, 2592(V0)
+129:                 }
+9D000830  03C0E821   ADDU SP, FP, ZERO
+9D000834  8FBE0004   LW FP, 4(SP)
+9D000838  27BD0008   ADDIU SP, SP, 8
+9D00083C  03E00008   JR RA
+9D000840  00000000   NOP
+130:                 
+131:                 uint32_t TMR2_Period32BitGet( void )
+132:                 {
+9D000844  27BDFFF0   ADDIU SP, SP, -16
+9D000848  AFBE000C   SW FP, 12(SP)
+9D00084C  03A0F021   ADDU FP, SP, ZERO
+133:                     uint32_t periodVal = 0xFFFFFFFF;
+9D000850  2402FFFF   ADDIU V0, ZERO, -1
+9D000854  AFC20000   SW V0, 0(FP)
+134:                 
+135:                     /* get the timer period value and return it */
+136:                     periodVal = (((uint32_t)PR3 <<16) | PR2);
+9D000858  3C02BF80   LUI V0, -16512
+9D00085C  8C420A20   LW V0, 2592(V0)
+9D000860  00021C00   SLL V1, V0, 16
+9D000864  3C02BF80   LUI V0, -16512
+9D000868  8C420820   LW V0, 2080(V0)
+9D00086C  00621025   OR V0, V1, V0
+9D000870  AFC20000   SW V0, 0(FP)
+137:                 
+138:                     return( periodVal );
+9D000874  8FC20000   LW V0, 0(FP)
+139:                 
+140:                 }
+9D000878  03C0E821   ADDU SP, FP, ZERO
+9D00087C  8FBE000C   LW FP, 12(SP)
+9D000880  27BD0010   ADDIU SP, SP, 16
+9D000884  03E00008   JR RA
+9D000888  00000000   NOP
+141:                 
+142:                 void TMR2_Counter32BitSet( uint32_t value )
+143:                 {
+9D00088C  27BDFFF8   ADDIU SP, SP, -8
+9D000890  AFBE0004   SW FP, 4(SP)
+9D000894  03A0F021   ADDU FP, SP, ZERO
+9D000898  AFC40008   SW A0, 8(FP)
+144:                     /* Update the counter values */
+145:                    TMR2 = (value & 0x0000FFFF);
+9D00089C  8FC20008   LW V0, 8(FP)
+9D0008A0  3043FFFF   ANDI V1, V0, -1
+9D0008A4  3C02BF80   LUI V0, -16512
+9D0008A8  AC430810   SW V1, 2064(V0)
+146:                    TMR3 = ((value & 0xFFFF0000)>>16);
+9D0008AC  8FC20008   LW V0, 8(FP)
+9D0008B0  00021C02   SRL V1, V0, 16
+9D0008B4  3C02BF80   LUI V0, -16512
+9D0008B8  AC430A10   SW V1, 2576(V0)
+147:                 
+148:                 }
+9D0008BC  03C0E821   ADDU SP, FP, ZERO
+9D0008C0  8FBE0004   LW FP, 4(SP)
+9D0008C4  27BD0008   ADDIU SP, SP, 8
+9D0008C8  03E00008   JR RA
+9D0008CC  00000000   NOP
+149:                 
+150:                 uint32_t TMR2_Counter32BitGet( void )
+151:                 {
+9D0008D0  27BDFFF0   ADDIU SP, SP, -16
+9D0008D4  AFBE000C   SW FP, 12(SP)
+9D0008D8  03A0F021   ADDU FP, SP, ZERO
+152:                     uint32_t countVal = 0xFFFFFFFF;
+9D0008DC  2402FFFF   ADDIU V0, ZERO, -1
+9D0008E0  AFC20000   SW V0, 0(FP)
+153:                 
+154:                     /* get the current counter value and return it */
+155:                     countVal = (((uint32_t)TMR3<<16)| TMR2 );
+9D0008E4  3C02BF80   LUI V0, -16512
+9D0008E8  8C420A10   LW V0, 2576(V0)
+9D0008EC  00021C00   SLL V1, V0, 16
+9D0008F0  3C02BF80   LUI V0, -16512
+9D0008F4  8C420810   LW V0, 2064(V0)
+9D0008F8  00621025   OR V0, V1, V0
+9D0008FC  AFC20000   SW V0, 0(FP)
+156:                 
+157:                     return( countVal );
+9D000900  8FC20000   LW V0, 0(FP)
+158:                 
+159:                 }
+9D000904  03C0E821   ADDU SP, FP, ZERO
+9D000908  8FBE000C   LW FP, 12(SP)
+9D00090C  27BD0010   ADDIU SP, SP, 16
+9D000910  03E00008   JR RA
+9D000914  00000000   NOP
+160:                 
+161:                 
+162:                 
+163:                 void __attribute__ ((weak)) TMR2_CallBack(void)
+164:                 {
+9D000918  27BDFFF8   ADDIU SP, SP, -8
+9D00091C  AFBE0004   SW FP, 4(SP)
+9D000920  03A0F021   ADDU FP, SP, ZERO
+165:                     // Add your custom callback code here
+166:                 }
+9D000924  03C0E821   ADDU SP, FP, ZERO
+9D000928  8FBE0004   LW FP, 4(SP)
+9D00092C  27BD0008   ADDIU SP, SP, 8
+9D000930  03E00008   JR RA
+9D000934  00000000   NOP
+167:                 
+168:                 void TMR2_Start( void )
+169:                 {
+9D000938  27BDFFF8   ADDIU SP, SP, -8
+9D00093C  AFBE0004   SW FP, 4(SP)
+9D000940  03A0F021   ADDU FP, SP, ZERO
+170:                     /* Reset the status information */
+171:                     tmr2_obj.timerElapsed = false;
+9D000944  A3808010   SB ZERO, -32752(GP)
+172:                 
+173:                     IFS0CLR= 1 << _IFS0_T3IF_POSITION;
+9D000948  3C02BF88   LUI V0, -16504
+9D00094C  24034000   ADDIU V1, ZERO, 16384
+9D000950  AC431034   SW V1, 4148(V0)
+174:                     /*Enable the interrupt*/
+175:                     IEC0bits.T3IE = true;
+9D000954  3C03BF88   LUI V1, -16504
+9D000958  8C621060   LW V0, 4192(V1)
+9D00095C  24040001   ADDIU A0, ZERO, 1
+9D000960  7C827384   INS V0, A0, 14, 1
+9D000964  AC621060   SW V0, 4192(V1)
+176:                 
+177:                     /* Start the Timer */
+178:                     T2CONbits.ON = 1;
+9D000968  3C03BF80   LUI V1, -16512
+9D00096C  94620800   LHU V0, 2048(V1)
+9D000970  24040001   ADDIU A0, ZERO, 1
+9D000974  7C827BC4   INS V0, A0, 15, 1
+9D000978  A4620800   SH V0, 2048(V1)
+179:                 }
+9D00097C  03C0E821   ADDU SP, FP, ZERO
+9D000980  8FBE0004   LW FP, 4(SP)
+9D000984  27BD0008   ADDIU SP, SP, 8
+9D000988  03E00008   JR RA
+9D00098C  00000000   NOP
+180:                 
+181:                 void TMR2_Stop( void )
+182:                 {
+9D000990  27BDFFF8   ADDIU SP, SP, -8
+9D000994  AFBE0004   SW FP, 4(SP)
+9D000998  03A0F021   ADDU FP, SP, ZERO
+183:                     /* Stop the Timer */
+184:                     T2CONbits.ON = false;
+9D00099C  3C03BF80   LUI V1, -16512
+9D0009A0  94620800   LHU V0, 2048(V1)
+9D0009A4  7C027BC4   INS V0, ZERO, 15, 1
+9D0009A8  A4620800   SH V0, 2048(V1)
+185:                 
+186:                     /*Disable the interrupt*/
+187:                     IEC0bits.T3IE = false;
+9D0009AC  3C03BF88   LUI V1, -16504
+9D0009B0  8C621060   LW V0, 4192(V1)
+9D0009B4  7C027384   INS V0, ZERO, 14, 1
+9D0009B8  AC621060   SW V0, 4192(V1)
+188:                 }
+9D0009BC  03C0E821   ADDU SP, FP, ZERO
+9D0009C0  8FBE0004   LW FP, 4(SP)
+9D0009C4  27BD0008   ADDIU SP, SP, 8
+9D0009C8  03E00008   JR RA
+9D0009CC  00000000   NOP
+189:                 
+190:                 bool TMR2_GetElapsedThenClear(void)
+191:                 {
+9D0009D0  27BDFFF0   ADDIU SP, SP, -16
+9D0009D4  AFBE000C   SW FP, 12(SP)
+9D0009D8  03A0F021   ADDU FP, SP, ZERO
+192:                     bool status;
+193:                     
+194:                     status = tmr2_obj.timerElapsed;
+9D0009DC  93828010   LBU V0, -32752(GP)
+9D0009E0  A3C20000   SB V0, 0(FP)
+195:                 
+196:                     if(status == true)
+9D0009E4  93C20000   LBU V0, 0(FP)
+9D0009E8  10400002   BEQ V0, ZERO, 0x9D0009F4
+9D0009EC  00000000   NOP
+197:                     {
+198:                         tmr2_obj.timerElapsed = false;
+9D0009F0  A3808010   SB ZERO, -32752(GP)
+199:                     }
+200:                     return status;
+9D0009F4  93C20000   LBU V0, 0(FP)
+201:                 }
+9D0009F8  03C0E821   ADDU SP, FP, ZERO
+9D0009FC  8FBE000C   LW FP, 12(SP)
+9D000A00  27BD0010   ADDIU SP, SP, 16
+9D000A04  03E00008   JR RA
+9D000A08  00000000   NOP
+202:                 
+203:                 int TMR2_SoftwareCounterGet(void)
+204:                 {
+9D000A0C  27BDFFF8   ADDIU SP, SP, -8
+9D000A10  AFBE0004   SW FP, 4(SP)
+9D000A14  03A0F021   ADDU FP, SP, ZERO
+205:                     return tmr2_obj.count;
+9D000A18  93828011   LBU V0, -32751(GP)
+206:                 }
+9D000A1C  03C0E821   ADDU SP, FP, ZERO
+9D000A20  8FBE0004   LW FP, 4(SP)
+9D000A24  27BD0008   ADDIU SP, SP, 8
+9D000A28  03E00008   JR RA
+9D000A2C  00000000   NOP
+207:                 
+208:                 void TMR2_SoftwareCounterClear(void)
+209:                 {
+9D000A30  27BDFFF8   ADDIU SP, SP, -8
+9D000A34  AFBE0004   SW FP, 4(SP)
+9D000A38  03A0F021   ADDU FP, SP, ZERO
+210:                     tmr2_obj.count = 0; 
+9D000A3C  A3808011   SB ZERO, -32751(GP)
+211:                 }
+9D000A40  03C0E821   ADDU SP, FP, ZERO
+212:                 
+213:                 /**
+214:                  End of File
+215:                 */
+---  c:/users/tbriggs/mplabxprojects/railroad.x/mcc_generated_files/pin_manager.c  ----------------------
+1:                   /**
+2:                     System Interrupts Generated Driver File 
+3:                   
+4:                     @Company:
+5:                       Microchip Technology Inc.
+6:                   
+7:                     @File Name:
+8:                       pin_manager.c
+9:                   
+10:                    @Summary:
+11:                      This is the generated manager file for the MPLAB(c) Code Configurator device.  This manager
+12:                      configures the pins direction, initial state, analog setting.
+13:                      The peripheral pin select, PPS, configuration is also handled by this manager.
+14:                  
+15:                    @Description:
+16:                      This source file provides implementations for MPLAB(c) Code Configurator interrupts.
+17:                      Generation Information : 
+18:                          Product Revision  :  MPLAB(c) Code Configurator - 4.65
+19:                          Device            :  PIC32MX130F064B
+20:                          Version           :  1.02
+21:                      The generated drivers are tested against the following:
+22:                          Compiler          :  XC32 1.42
+23:                          MPLAB             :  MPLAB X 3.55
+24:                  
+25:                      Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
+26:                  
+27:                      Microchip licenses to you the right to use, modify, copy and distribute
+28:                      Software only when embedded on a Microchip microcontroller or digital signal
+29:                      controller that is integrated into your product or third party product
+30:                      (pursuant to the sublicense terms in the accompanying license agreement).
+31:                  
+32:                      You should refer to the license agreement accompanying this Software for
+33:                      additional information regarding your rights and obligations.
+34:                  
+35:                      SOFTWARE AND DOCUMENTATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+36:                      EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF
+37:                      MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE.
+38:                      IN NO EVENT SHALL MICROCHIP OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER
+39:                      CONTRACT, NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR
+40:                      OTHER LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+41:                      INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE OR
+42:                      CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OF
+43:                      SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+44:                      (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+45:                  
+46:                  */
+47:                  
+48:                  
+49:                  /**
+50:                      Section: Includes
+51:                  */
+52:                  #include <xc.h>
+53:                  #include <sys/attribs.h>
+54:                  #include "pin_manager.h"
+55:                  #include "mcc.h"
+56:                  
+57:                  /**
+58:                      void PIN_MANAGER_Initialize(void)
+59:                  */
+60:                  void PIN_MANAGER_Initialize(void)
+61:                  {
+9D001154  27BDFFF8   ADDIU SP, SP, -8
+9D001158  AFBE0004   SW FP, 4(SP)
+9D00115C  03A0F021   ADDU FP, SP, ZERO
+62:                      /****************************************************************************
+63:                       * Setting the Output Latch SFR(s)
+64:                       ***************************************************************************/
+65:                      LATA = 0x0000;
+9D001160  3C02BF88   LUI V0, -16504
+9D001164  AC406030   SW ZERO, 24624(V0)
+66:                      LATB = 0x0000;
+9D001168  3C02BF88   LUI V0, -16504
+9D00116C  AC406130   SW ZERO, 24880(V0)
+67:                  
+68:                      /****************************************************************************
+69:                       * Setting the GPIO Direction SFR(s)
+70:                       ***************************************************************************/
+71:                      TRISA = 0x079B;
+9D001170  3C02BF88   LUI V0, -16504
+9D001174  2403079B   ADDIU V1, ZERO, 1947
+9D001178  AC436010   SW V1, 24592(V0)
+72:                      TRISB = 0xFE33;
+9D00117C  3C02BF88   LUI V0, -16504
+9D001180  3403FE33   ORI V1, ZERO, -461
+9D001184  AC436110   SW V1, 24848(V0)
+73:                  
+74:                      /****************************************************************************
+75:                       * Setting the Weak Pull Up and Weak Pull Down SFR(s)
+76:                       ***************************************************************************/
+77:                      CNPDA = 0x0000;
+9D001188  3C02BF88   LUI V0, -16504
+9D00118C  AC406060   SW ZERO, 24672(V0)
+78:                      CNPDB = 0x0000;
+9D001190  3C02BF88   LUI V0, -16504
+9D001194  AC406160   SW ZERO, 24928(V0)
+79:                      CNPUA = 0x0000;
+9D001198  3C02BF88   LUI V0, -16504
+9D00119C  AC406050   SW ZERO, 24656(V0)
+80:                      CNPUB = 0x0000;
+9D0011A0  3C02BF88   LUI V0, -16504
+9D0011A4  AC406150   SW ZERO, 24912(V0)
+81:                  
+82:                      /****************************************************************************
+83:                       * Setting the Open Drain SFR(s)
+84:                       ***************************************************************************/
+85:                      ODCA = 0x0000;
+9D0011A8  3C02BF88   LUI V0, -16504
+9D0011AC  AC406040   SW ZERO, 24640(V0)
+86:                      ODCB = 0x0000;
+9D0011B0  3C02BF88   LUI V0, -16504
+9D0011B4  AC406140   SW ZERO, 24896(V0)
+87:                  
+88:                      /****************************************************************************
+89:                       * Setting the Analog/Digital Configuration SFR(s)
+90:                       ***************************************************************************/
+91:                      ANSELA = 0x0003;
+9D0011B8  3C02BF88   LUI V0, -16504
+9D0011BC  24030003   ADDIU V1, ZERO, 3
+9D0011C0  AC436000   SW V1, 24576(V0)
+92:                      ANSELB = 0xF000;
+9D0011C4  3C02BF88   LUI V0, -16504
+9D0011C8  3403F000   ORI V1, ZERO, -4096
+9D0011CC  AC436100   SW V1, 24832(V0)
+93:                  
+94:                  
+95:                      
+96:                  }
+9D0011D0  03C0E821   ADDU SP, FP, ZERO
+97:                  
+---  c:/users/tbriggs/mplabxprojects/railroad.x/mcc_generated_files/mcc.c  ------------------------------
+1:                   /**
+2:                     @Generated PIC32MX MCUs Source File
+3:                   
+4:                     @Company:
+5:                       Microchip Technology Inc.
+6:                   
+7:                     @File Name:
+8:                       mcc.c
+9:                   
+10:                    @Summary:
+11:                      This is the mcc.c file generated using PIC32MX MCUs
+12:                  
+13:                    @Description:
+14:                      This header file provides implementations for driver APIs for all modules selected in the GUI.
+15:                      Generation Information :
+16:                          Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
+17:                          Device            :  PIC32MX130F064B
+18:                          Driver Version    :  1.02
+19:                      The generated drivers are tested against the following:
+20:                          Compiler          :  XC32 1.42
+21:                          MPLAB             :  MPLAB X 3.55
+22:                  */
+23:                  
+24:                  /*
+25:                      (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+26:                      software and any derivatives exclusively with Microchip products.
+27:                  
+28:                      THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+29:                      EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+30:                      WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+31:                      PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+32:                      WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+33:                  
+34:                      IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+35:                      INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+36:                      WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+37:                      BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+38:                      FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+39:                      ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+40:                      THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+41:                  
+42:                      MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+43:                      TERMS.
+44:                  */
+45:                  
+46:                  // Configuration bits: selected in the GUI
+47:                  
+48:                  // DEVCFG3
+49:                  #pragma config PMDL1WAY = ON    // Peripheral Module Disable Configuration->Allow only one reconfiguration
+50:                  #pragma config IOL1WAY = ON    // Peripheral Pin Select Configuration->Allow only one reconfiguration
+51:                  
+52:                  // DEVCFG2
+53:                  #pragma config FPLLIDIV = DIV_12    // PLL Input Divider->12x Divider
+54:                  #pragma config FPLLMUL = MUL_24    // PLL Multiplier->24x Multiplier
+55:                  #pragma config FPLLODIV = DIV_256    // System PLL Output Clock Divider->PLL Divide by 256
+56:                  
+57:                  // DEVCFG1
+58:                  #pragma config FNOSC = FRCDIV    // Oscillator Selection Bits->Fast RC Osc w/Div-by-N (FRCDIV)
+59:                  #pragma config FSOSCEN = OFF    // Secondary Oscillator Enable->Disabled
+60:                  #pragma config IESO = OFF    // Internal/External Switch Over->Disabled
+61:                  #pragma config POSCMOD = OFF    // Primary Oscillator Configuration->Primary osc disabled
+62:                  #pragma config OSCIOFNC = OFF    // CLKO Output Signal Active on the OSCO Pin->Disabled
+63:                  #pragma config FPBDIV = DIV_8    // Peripheral Clock Divisor->Pb_Clk is Sys_Clk/8
+64:                  #pragma config FCKSM = CSDCMD    // Clock Switching and Monitor Selection->Clock Switch Disable, FSCM Disabled
+65:                  #pragma config WDTPS = PS1048576    // Watchdog Timer Postscaler->1:1048576
+66:                  #pragma config WINDIS = OFF    // Watchdog Timer Window Enable->Watchdog Timer is in Non-Window Mode
+67:                  #pragma config FWDTEN = OFF    // Watchdog Timer Enable->WDT Disabled (SWDTEN Bit Controls)
+68:                  #pragma config FWDTWINSZ = WINSZ_25    // Watchdog Timer Window Size->Window Size is 25%
+69:                  
+70:                  // DEVCFG0
+71:                  #pragma config DEBUG = OFF    // Background Debugger Enable->Debugger is Disabled
+72:                  #pragma config JTAGEN = OFF    // JTAG Enable->JTAG Disabled
+73:                  #pragma config ICESEL = ICS_PGx1    // ICE/ICD Comm Channel Select->Communicate on PGEC1/PGED1
+74:                  #pragma config PWP = OFF    // Program Flash Write Protect->Disable
+75:                  #pragma config BWP = OFF    // Boot Flash Write Protect bit->Protection Disabled
+76:                  #pragma config CP = OFF    // Code Protect->Protection Disabled
+77:                  
+78:                  #include "mcc.h"
+79:                  
+80:                  /**
+81:                    @Summary
+82:                      Indicates the exception cause. 
+83:                  
+84:                    @Description
+85:                      This array identifies the cause for exception.
+86:                   */
+87:                  
+88:                  static char *cause[] = 
+89:                  {
+90:                      "Interrupt", "Undefined", "Undefined", "Undefined",
+91:                      "Load/fetch address error", "Store address error",
+92:                      "Instruction bus error", "Data bus error", "Syscall", 
+93:                      "Breakpoint", "Reserved instruction", "Coprocessor unusable", 
+94:                      "Arithmetic overflow", "Trap", "Reserved", "Reserved", 
+95:                      "Reserved", "Reserved", "Reserved"
+96:                  };
+97:                  
+98:                  void SYSTEM_Initialize(void)
+99:                  {
+9D000D90  27BDFFE8   ADDIU SP, SP, -24
+9D000D94  AFBF0014   SW RA, 20(SP)
+9D000D98  AFBE0010   SW FP, 16(SP)
+9D000D9C  03A0F021   ADDU FP, SP, ZERO
+100:                     PIN_MANAGER_Initialize();
+9D000DA0  0F400455   JAL PIN_MANAGER_Initialize
+9D000DA4  00000000   NOP
+101:                     OSCILLATOR_Initialize();
+9D000DA8  0F400396   JAL OSCILLATOR_Initialize
+9D000DAC  00000000   NOP
+102:                     ADC1_Initialize();
+9D000DB0  0F400295   JAL ADC1_Initialize
+9D000DB4  00000000   NOP
+103:                     TMR2_Initialize();
+9D000DB8  0F400188   JAL TMR2_Initialize
+9D000DBC  00000000   NOP
+104:                     INTERRUPT_Initialize();
+9D000DC0  0F400430   JAL INTERRUPT_Initialize
+9D000DC4  00000000   NOP
+105:                 
+106:                 }
+9D000DC8  03C0E821   ADDU SP, FP, ZERO
+9D000DCC  8FBF0014   LW RA, 20(SP)
+9D000DD0  8FBE0010   LW FP, 16(SP)
+9D000DD4  27BD0018   ADDIU SP, SP, 24
+9D000DD8  03E00008   JR RA
+9D000DDC  00000000   NOP
+107:                 
+108:                 void SYSTEM_RegUnlock(void)
+109:                 {
+9D000DE0  27BDFFF8   ADDIU SP, SP, -8
+9D000DE4  AFBE0004   SW FP, 4(SP)
+9D000DE8  03A0F021   ADDU FP, SP, ZERO
+110:                     SYSKEY = 0x12345678;
+9D000DEC  3C02BF81   LUI V0, -16511
+9D000DF0  3C031234   LUI V1, 4660
+9D000DF4  34635678   ORI V1, V1, 22136
+9D000DF8  AC43F230   SW V1, -3536(V0)
+111:                     SYSKEY = 0xAA996655;
+9D000DFC  3C02BF81   LUI V0, -16511
+9D000E00  3C03AA99   LUI V1, -21863
+9D000E04  34636655   ORI V1, V1, 26197
+9D000E08  AC43F230   SW V1, -3536(V0)
+112:                     SYSKEY = 0x556699AA;
+9D000E0C  3C02BF81   LUI V0, -16511
+9D000E10  3C035566   LUI V1, 21862
+9D000E14  346399AA   ORI V1, V1, -26198
+9D000E18  AC43F230   SW V1, -3536(V0)
+113:                 }
+9D000E1C  03C0E821   ADDU SP, FP, ZERO
+9D000E20  8FBE0004   LW FP, 4(SP)
+9D000E24  27BD0008   ADDIU SP, SP, 8
+9D000E28  03E00008   JR RA
+9D000E2C  00000000   NOP
+114:                 
+115:                 void SYSTEM_RegLock(void)
+116:                 {
+9D000E30  27BDFFF8   ADDIU SP, SP, -8
+9D000E34  AFBE0004   SW FP, 4(SP)
+9D000E38  03A0F021   ADDU FP, SP, ZERO
+117:                     SYSKEY = 0x00000000; 
+9D000E3C  3C02BF81   LUI V0, -16511
+9D000E40  AC40F230   SW ZERO, -3536(V0)
+118:                 }
+9D000E44  03C0E821   ADDU SP, FP, ZERO
+9D000E48  8FBE0004   LW FP, 4(SP)
+9D000E4C  27BD0008   ADDIU SP, SP, 8
+9D000E50  03E00008   JR RA
+9D000E54  00000000   NOP
+119:                 
+120:                 void OSCILLATOR_Initialize(void)
+121:                 {
+9D000E58  27BDFFE8   ADDIU SP, SP, -24
+9D000E5C  AFBF0014   SW RA, 20(SP)
+9D000E60  AFBE0010   SW FP, 16(SP)
+9D000E64  03A0F021   ADDU FP, SP, ZERO
+122:                     SYSTEM_RegUnlock(); 
+9D000E68  0F400378   JAL SYSTEM_RegUnlock
+9D000E6C  00000000   NOP
+123:                     // CF no clock failure; COSC FRCDIV; PLLODIV DIV_256; PBDIVRDY disabled; SLOCK out of lock; FRCDIV FRC/1; SLPEN Idle on WAIT instruction; NOSC FRCDIV; PLLMULT MUL_24; SOSCEN disabled; PBDIV DIV_8; CLKLOCK unlocked; OSWEN Switch is Complete; SOSCRDY disabled; 
+124:                     OSCCON = 0x381F7700;
+9D000E70  3C02BF81   LUI V0, -16511
+9D000E74  3C03381F   LUI V1, 14367
+9D000E78  34637700   ORI V1, V1, 30464
+9D000E7C  AC43F000   SW V1, -4096(V0)
+125:                     SYSTEM_RegLock();
+9D000E80  0F40038C   JAL SYSTEM_RegLock
+9D000E84  00000000   NOP
+126:                     // TUN Center Frequency; 
+127:                     OSCTUN = 0x0;
+9D000E88  3C02BF81   LUI V0, -16511
+9D000E8C  AC40F010   SW ZERO, -4080(V0)
+128:                     // DIVSWEN disabled; RSLP disabled; ACTIVE Active; ROSEL SYSCLK; OE Not Driven out on REFCLKO pin; SIDL disabled; RODIV 0; ON disabled; 
+129:                     REFOCON = 0x100;
+9D000E90  3C02BF81   LUI V0, -16511
+9D000E94  24030100   ADDIU V1, ZERO, 256
+9D000E98  AC43F020   SW V1, -4064(V0)
+130:                     // ROTRIM 0; 
+131:                     REFOTRIM = 0x0;
+9D000E9C  3C02BF81   LUI V0, -16511
+9D000EA0  AC40F030   SW ZERO, -4048(V0)
+132:                 }
+9D000EA4  03C0E821   ADDU SP, FP, ZERO
+9D000EA8  8FBF0014   LW RA, 20(SP)
+9D000EAC  8FBE0010   LW FP, 16(SP)
+9D000EB0  27BD0018   ADDIU SP, SP, 24
+9D000EB4  03E00008   JR RA
+9D000EB8  00000000   NOP
+133:                 
+134:                 void _general_exception_handler ()
+135:                 {
+9D000EBC  27BDFFF0   ADDIU SP, SP, -16
+9D000EC0  AFBF000C   SW RA, 12(SP)
+9D000EC4  AFBE0008   SW FP, 8(SP)
+9D000EC8  03A0F021   ADDU FP, SP, ZERO
+136:                     /* Mask off the ExcCode Field from the Cause Register
+137:                     Refer to the MIPs Software User's manual */
+138:                     uint8_t _excep_code;
+139:                     uint8_t _excep_addr;
+140:                     uint8_t *_cause_str;
+141:                     _excep_code = (_CP0_GET_CAUSE() & 0x0000007C) >> 2;
+9D000ECC  40026800   MFC0 V0, Cause
+9D000ED0  3042007C   ANDI V0, V0, 124
+9D000ED4  00021082   SRL V0, V0, 2
+9D000ED8  A3C20000   SB V0, 0(FP)
+142:                     _excep_addr = _CP0_GET_EPC();
+9D000EDC  40027000   MFC0 V0, EPC
+9D000EE0  A3C20001   SB V0, 1(FP)
+143:                     _cause_str  = cause[_excep_code];
+9D000EE4  93C30000   LBU V1, 0(FP)
+9D000EE8  3C02A000   LUI V0, -24576
+9D000EEC  00031880   SLL V1, V1, 2
+9D000EF0  24420218   ADDIU V0, V0, 536
+9D000EF4  00621021   ADDU V0, V1, V0
+9D000EF8  8C420000   LW V0, 0(V0)
+9D000EFC  AFC20004   SW V0, 4(FP)
+144:                 
+145:                     while(1)
+146:                     {
+147:                       ;
+148:                     }
+9D000F00  0B4003C0   J 0x9D000F00
+149:                 }
+150:                 
+151:                 /**
+152:                  End of File
+153:                 */
+---  c:/users/tbriggs/mplabxprojects/railroad.x/mcc_generated_files/interrupt_manager.c  ----------------
+1:                   /**
+2:                     System Interrupts Generated Driver File 
+3:                   
+4:                     @Company:
+5:                       Microchip Technology Inc.
+6:                   
+7:                     @File Name:
+8:                       interrupt_manager.h
+9:                   
+10:                    @Summary:
+11:                      This is the generated driver implementation file for setting up the
+12:                      interrupts using PIC32MX MCUs
+13:                  
+14:                    @Description:
+15:                      This source file provides implementations for PIC32MX MCUs interrupts.
+16:                      Generation Information : 
+17:                          Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
+18:                          Device            :  PIC32MX130F064B
+19:                          Version           :  1.01
+20:                      The generated drivers are tested against the following:
+21:                          Compiler          :  XC32 1.42
+22:                          MPLAB             :  MPLAB X 3.55
+23:                  */
+24:                  /*
+25:                      (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+26:                      software and any derivatives exclusively with Microchip products.
+27:                  
+28:                      THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+29:                      EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+30:                      WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+31:                      PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+32:                      WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+33:                  
+34:                      IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+35:                      INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+36:                      WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+37:                      BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+38:                      FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+39:                      ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+40:                      THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+41:                  
+42:                      MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+43:                      TERMS.
+44:                  */
+45:                  
+46:                  /**
+47:                      Section: Includes
+48:                  */
+49:                  #include <xc.h>
+50:                  
+51:                  /**
+52:                      void INTERRUPT_Initialize (void)
+53:                  */
+54:                  void INTERRUPT_Initialize (void)
+55:                  {    
+9D0010C0  27BDFFF8   ADDIU SP, SP, -8
+9D0010C4  AFBF0004   SW RA, 4(SP)
+9D0010C8  AFBE0000   SW FP, 0(SP)
+9D0010CC  03A0F021   ADDU FP, SP, ZERO
+56:                      //    TNI: Timer 3
+57:                      //    Priority: 1
+58:                      //    SubPriority: 0
+59:                          IPC3bits.T3IP = 1;
+9D0010D0  3C03BF88   LUI V1, -16504
+9D0010D4  8C6210C0   LW V0, 4288(V1)
+9D0010D8  24040001   ADDIU A0, ZERO, 1
+9D0010DC  7C822084   INS V0, A0, 2, 3
+9D0010E0  AC6210C0   SW V0, 4288(V1)
+60:                          IPC3bits.T3IS = 0;
+9D0010E4  3C03BF88   LUI V1, -16504
+9D0010E8  8C6210C0   LW V0, 4288(V1)
+9D0010EC  7C020804   INS V0, ZERO, 0, 2
+9D0010F0  AC6210C0   SW V0, 4288(V1)
+61:                      //    ADI: ADC1 Convert Done
+62:                      //    Priority: 1
+63:                      //    SubPriority: 0
+64:                          IPC5bits.AD1IP = 1;
+9D0010F4  3C03BF88   LUI V1, -16504
+9D0010F8  8C6210E0   LW V0, 4320(V1)
+9D0010FC  24040001   ADDIU A0, ZERO, 1
+9D001100  7C82E684   INS V0, A0, 26, 3
+9D001104  AC6210E0   SW V0, 4320(V1)
+65:                          IPC5bits.AD1IS = 0;
+9D001108  3C03BF88   LUI V1, -16504
+9D00110C  8C6210E0   LW V0, 4320(V1)
+9D001110  7C02CE04   INS V0, ZERO, 24, 2
+9D001114  AC6210E0   SW V0, 4320(V1)
+66:                  
+67:                      //  Enable the multi vector
+68:                      INTCONbits.MVEC = 1;
+9D001118  3C03BF88   LUI V1, -16504
+9D00111C  8C621000   LW V0, 4096(V1)
+9D001120  24040001   ADDIU A0, ZERO, 1
+9D001124  7C826304   INS V0, A0, 12, 1
+9D001128  AC621000   SW V0, 4096(V1)
+69:                      //  Enable Global Interrupts 
+70:                      __builtin_mtc0(12,0,(__builtin_mfc0(12,0) | 0x0001));
+9D00112C  40026000   MFC0 V0, Status
+9D001130  34420001   ORI V0, V0, 1
+9D001134  40826000   MTC0 V0, Status
+9D001138  000000C0   EHB
+71:                  
+72:                  }
+9D00113C  03C0E821   ADDU SP, FP, ZERO
+---  c:/users/tbriggs/mplabxprojects/railroad.x/mcc_generated_files/adc1.c  -----------------------------
+1:                   
+2:                   /**
+3:                     ADC1 Generated Driver File
+4:                   
+5:                     @Company
+6:                       Microchip Technology Inc.
+7:                   
+8:                     @File Name
+9:                       adc1.c
+10:                  
+11:                    @Summary
+12:                      This is the generated header file for the ADC1 driver using PIC32MX MCUs
+13:                  
+14:                    @Description
+15:                      This header file provides APIs for driver for ADC1.
+16:                      Generation Information :
+17:                          Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
+18:                          Device            :  PIC32MX130F064B
+19:                          Driver Version    :  0.5
+20:                      The generated drivers are tested against the following:
+21:                          Compiler          :  XC32 1.42
+22:                          MPLAB 	          :  MPLAB X 3.55
+23:                  */
+24:                  
+25:                  /*
+26:                      (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+27:                      software and any derivatives exclusively with Microchip products.
+28:                  
+29:                      THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+30:                      EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+31:                      WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+32:                      PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+33:                      WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+34:                  
+35:                      IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+36:                      INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+37:                      WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+38:                      BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+39:                      FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+40:                      ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+41:                      THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+42:                  
+43:                      MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+44:                      TERMS.
+45:                  */
+46:                  
+47:                  /**
+48:                    Section: Included Files
+49:                  */
+50:                  
+51:                  #include <xc.h>
+52:                  #include "adc1.h"
+53:                  #include "../handlers.h"
+54:                  
+55:                  /**
+56:                    Section: Driver Interface
+57:                  */
+58:                  
+59:                  void ADC1_Initialize (void)
+60:                  {
+9D000A54  27BDFFF8   ADDIU SP, SP, -8
+9D000A58  AFBE0004   SW FP, 4(SP)
+9D000A5C  03A0F021   ADDU FP, SP, ZERO
+61:                      // ASAM enabled; DONE disabled; CLRASAM disabled; FORM Integer 16 bit; SAMP disabled; SSRC TMR3; SIDL disabled; ON enabled; 
+62:                     AD1CON1 = 0x8044;
+9D000A60  3C02BF81   LUI V0, -16511
+9D000A64  34038044   ORI V1, ZERO, -32700
+9D000A68  AC439000   SW V1, -28672(V0)
+63:                  
+64:                      // CSCNA enabled; ALTS disabled; BUFM disabled; SMPI 3; OFFCAL disabled; VCFG AVDD/AVSS; 
+65:                     AD1CON2 = 0x408;
+9D000A6C  3C02BF81   LUI V0, -16511
+9D000A70  24030408   ADDIU V1, ZERO, 1032
+9D000A74  AC439010   SW V1, -28656(V0)
+66:                  
+67:                      // SAMC 0; ADRC PBCLK; ADCS 0; 
+68:                     AD1CON3 = 0x0;
+9D000A78  3C02BF81   LUI V0, -16511
+9D000A7C  AC409020   SW ZERO, -28640(V0)
+69:                  
+70:                      // CH0SA AN0; CH0SB AN0; CH0NB Vrefl; CH0NA Vrefl; 
+71:                     AD1CHS = 0x0;
+9D000A80  3C02BF81   LUI V0, -16511
+9D000A84  AC409040   SW ZERO, -28608(V0)
+72:                  
+73:                      // CSSL15 disabled; CSSL14 disabled; CSSL11 disabled; CSSL10 disabled; CSSL13 disabled; CSSL9 enabled; CSSL12 disabled; CSSL0 enabled; CSSL8 disabled; CSSL7 disabled; CSSL6 disabled; CSSL5 disabled; CSSL4 disabled; CSSL3 disabled; CSSL2 disabled; CSSL1 enabled; 
+74:                     AD1CSSL = 0x203;
+9D000A88  3C02BF81   LUI V0, -16511
+9D000A8C  24030203   ADDIU V1, ZERO, 515
+9D000A90  AC439050   SW V1, -28592(V0)
+75:                  
+76:                  
+77:                     // Enabling ADC1 interrupt.
+78:                     IEC0bits.AD1IE = 1;
+9D000A94  3C03BF88   LUI V1, -16504
+9D000A98  8C621060   LW V0, 4192(V1)
+9D000A9C  24040001   ADDIU A0, ZERO, 1
+9D000AA0  7C82E704   INS V0, A0, 28, 1
+9D000AA4  AC621060   SW V0, 4192(V1)
+79:                  }
+9D000AA8  03C0E821   ADDU SP, FP, ZERO
+9D000AAC  8FBE0004   LW FP, 4(SP)
+9D000AB0  27BD0008   ADDIU SP, SP, 8
+9D000AB4  03E00008   JR RA
+9D000AB8  00000000   NOP
+80:                  
+81:                  void ADC1_Start(void)
+82:                  {
+9D000ABC  27BDFFF8   ADDIU SP, SP, -8
+9D000AC0  AFBE0004   SW FP, 4(SP)
+9D000AC4  03A0F021   ADDU FP, SP, ZERO
+83:                     AD1CON1bits.SAMP = 1;
+9D000AC8  3C03BF81   LUI V1, -16511
+9D000ACC  94629000   LHU V0, -28672(V1)
+9D000AD0  24040001   ADDIU A0, ZERO, 1
+9D000AD4  7C820844   INS V0, A0, 1, 1
+9D000AD8  A4629000   SH V0, -28672(V1)
+84:                  }
+9D000ADC  03C0E821   ADDU SP, FP, ZERO
+9D000AE0  8FBE0004   LW FP, 4(SP)
+9D000AE4  27BD0008   ADDIU SP, SP, 8
+9D000AE8  03E00008   JR RA
+9D000AEC  00000000   NOP
+85:                  
+86:                  void ADC1_Stop(void)
+87:                  {
+9D000AF0  27BDFFF8   ADDIU SP, SP, -8
+9D000AF4  AFBE0004   SW FP, 4(SP)
+9D000AF8  03A0F021   ADDU FP, SP, ZERO
+88:                     AD1CON1bits.SAMP = 0;
+9D000AFC  3C03BF81   LUI V1, -16511
+9D000B00  94629000   LHU V0, -28672(V1)
+9D000B04  7C020844   INS V0, ZERO, 1, 1
+9D000B08  A4629000   SH V0, -28672(V1)
+89:                  }
+9D000B0C  03C0E821   ADDU SP, FP, ZERO
+9D000B10  8FBE0004   LW FP, 4(SP)
+9D000B14  27BD0008   ADDIU SP, SP, 8
+9D000B18  03E00008   JR RA
+9D000B1C  00000000   NOP
+90:                  
+91:                  void ADC1_ConversionResultBufferGet(uint32_t *buffer, int num_samps)
+92:                  {
+9D000B20  27BDFFF0   ADDIU SP, SP, -16
+9D000B24  AFBE000C   SW FP, 12(SP)
+9D000B28  03A0F021   ADDU FP, SP, ZERO
+9D000B2C  AFC40010   SW A0, 16(FP)
+9D000B30  AFC50014   SW A1, 20(FP)
+93:                      int count;
+94:                      uint32_t *ADC32Ptr;
+95:                  
+96:                      ADC32Ptr = (uint32_t *)&(ADC1BUF0);
+9D000B34  3C02BF81   LUI V0, -16511
+9D000B38  24429070   ADDIU V0, V0, -28560
+9D000B3C  AFC20004   SW V0, 4(FP)
+97:                      
+98:                      for(count=0; count<= num_samps; count++)
+9D000B40  AFC00000   SW ZERO, 0(FP)
+9D000B44  0B4002E0   J 0x9D000B80
+9D000B48  00000000   NOP
+9D000B74  8FC20000   LW V0, 0(FP)
+9D000B78  24420001   ADDIU V0, V0, 1
+9D000B7C  AFC20000   SW V0, 0(FP)
+9D000B80  8FC30000   LW V1, 0(FP)
+9D000B84  8FC20014   LW V0, 20(FP)
+9D000B88  0043102A   SLT V0, V0, V1
+9D000B8C  1040FFEF   BEQ V0, ZERO, 0x9D000B4C
+9D000B90  00000000   NOP
+99:                      {
+100:                         buffer[count] = (uint32_t)*ADC32Ptr;
+9D000B4C  8FC20000   LW V0, 0(FP)
+9D000B50  00021080   SLL V0, V0, 2
+9D000B54  8FC30010   LW V1, 16(FP)
+9D000B58  00621021   ADDU V0, V1, V0
+9D000B5C  8FC30004   LW V1, 4(FP)
+9D000B60  8C630000   LW V1, 0(V1)
+9D000B64  AC430000   SW V1, 0(V0)
+101:                         ADC32Ptr = ADC32Ptr + 4;
+9D000B68  8FC20004   LW V0, 4(FP)
+9D000B6C  24420010   ADDIU V0, V0, 16
+9D000B70  AFC20004   SW V0, 4(FP)
+102:                     }
+103:                 }
+9D000B94  03C0E821   ADDU SP, FP, ZERO
+9D000B98  8FBE000C   LW FP, 12(SP)
+9D000B9C  27BD0010   ADDIU SP, SP, 16
+9D000BA0  03E00008   JR RA
+9D000BA4  00000000   NOP
+104:                 
+105:                 uint32_t ADC1_ConversionResultGet(void)
+106:                 {
+9D000BA8  27BDFFF8   ADDIU SP, SP, -8
+9D000BAC  AFBE0004   SW FP, 4(SP)
+9D000BB0  03A0F021   ADDU FP, SP, ZERO
+107:                     return ADC1BUF0;
+9D000BB4  3C02BF81   LUI V0, -16511
+9D000BB8  8C429070   LW V0, -28560(V0)
+108:                 }
+9D000BBC  03C0E821   ADDU SP, FP, ZERO
+9D000BC0  8FBE0004   LW FP, 4(SP)
+9D000BC4  27BD0008   ADDIU SP, SP, 8
+9D000BC8  03E00008   JR RA
+9D000BCC  00000000   NOP
+109:                 
+110:                 bool ADC1_IsConversionComplete( void )
+111:                 {
+9D000BD0  27BDFFF8   ADDIU SP, SP, -8
+9D000BD4  AFBE0004   SW FP, 4(SP)
+9D000BD8  03A0F021   ADDU FP, SP, ZERO
+112:                     return AD1CON1bits.DONE; //Wait for conversion to complete   
+9D000BDC  3C02BF81   LUI V0, -16511
+9D000BE0  8C429000   LW V0, -28672(V0)
+9D000BE4  7C420000   EXT V0, V0, 0, 1
+9D000BE8  304200FF   ANDI V0, V0, 255
+9D000BEC  0002102B   SLTU V0, ZERO, V0
+9D000BF0  304200FF   ANDI V0, V0, 255
+113:                 }
+9D000BF4  03C0E821   ADDU SP, FP, ZERO
+9D000BF8  8FBE0004   LW FP, 4(SP)
+9D000BFC  27BD0008   ADDIU SP, SP, 8
+9D000C00  03E00008   JR RA
+9D000C04  00000000   NOP
+114:                 
+115:                 void ADC1_ChannelSelect( ADC1_CHANNEL channel )
+116:                 {
+9D000C08  27BDFFF8   ADDIU SP, SP, -8
+9D000C0C  AFBE0004   SW FP, 4(SP)
+9D000C10  03A0F021   ADDU FP, SP, ZERO
+9D000C14  AFC40008   SW A0, 8(FP)
+117:                     AD1CHS = channel << 16;
+9D000C18  8FC20008   LW V0, 8(FP)
+9D000C1C  00021C00   SLL V1, V0, 16
+9D000C20  3C02BF81   LUI V0, -16511
+9D000C24  AC439040   SW V1, -28608(V0)
+118:                 }
+9D000C28  03C0E821   ADDU SP, FP, ZERO
+9D000C2C  8FBE0004   LW FP, 4(SP)
+9D000C30  27BD0008   ADDIU SP, SP, 8
+9D000C34  03E00008   JR RA
+9D000C38  00000000   NOP
+119:                 
+120:                 void __ISR ( _ADC_VECTOR, IPL1AUTO ) ADC_1 (void)
+121:                 {
+9D000C3C  415DE800   RDPGPR SP, SP
+9D000C40  401B7000   MFC0 K1, EPC
+9D000C44  401A6002   MFC0 K0, SRSCtl
+9D000C48  27BDFF88   ADDIU SP, SP, -120
+9D000C4C  AFBB0074   SW K1, 116(SP)
+9D000C50  401B6000   MFC0 K1, Status
+9D000C54  AFBA006C   SW K0, 108(SP)
+9D000C58  AFBB0070   SW K1, 112(SP)
+9D000C5C  7C1B7844   INS K1, ZERO, 1, 15
+9D000C60  377B0400   ORI K1, K1, 1024
+9D000C64  409B6000   MTC0 K1, Status
+9D000C68  AFA3001C   SW V1, 28(SP)
+9D000C6C  AFA20018   SW V0, 24(SP)
+9D000C70  8FA3006C   LW V1, 108(SP)
+9D000C74  3063000F   ANDI V1, V1, 15
+9D000C78  14600012   BNE V1, ZERO, 0x9D000CC4
+9D000C7C  00000000   NOP
+9D000C80  AFBF005C   SW RA, 92(SP)
+9D000C84  AFBE0058   SW FP, 88(SP)
+9D000C88  AFB90054   SW T9, 84(SP)
+9D000C8C  AFB80050   SW T8, 80(SP)
+9D000C90  AFAF004C   SW T7, 76(SP)
+9D000C94  AFAE0048   SW T6, 72(SP)
+9D000C98  AFAD0044   SW T5, 68(SP)
+9D000C9C  AFAC0040   SW T4, 64(SP)
+9D000CA0  AFAB003C   SW T3, 60(SP)
+9D000CA4  AFAA0038   SW T2, 56(SP)
+9D000CA8  AFA90034   SW T1, 52(SP)
+9D000CAC  AFA80030   SW T0, 48(SP)
+9D000CB0  AFA7002C   SW A3, 44(SP)
+9D000CB4  AFA60028   SW A2, 40(SP)
+9D000CB8  AFA50024   SW A1, 36(SP)
+9D000CBC  AFA40020   SW A0, 32(SP)
+9D000CC0  AFA10014   SW AT, 20(SP)
+9D000CC4  00000000   NOP
+9D000CC8  00001012   MFLO V0
+9D000CCC  AFA20064   SW V0, 100(SP)
+9D000CD0  00001810   MFHI V1
+9D000CD4  AFA30060   SW V1, 96(SP)
+9D000CD8  03A0F021   ADDU FP, SP, ZERO
+122:                     // Read ADC Buffer since the interrupt is persistent
+123:                     handle_adc();
+9D000CDC  0F400049   JAL handle_adc
+9D000CE0  00000000   NOP
+124:                     
+125:                     // clear ADC interrupt flag
+126:                     IFS0CLR= 1 << _IFS0_AD1IF_POSITION;
+9D000CE4  3C02BF88   LUI V0, -16504
+9D000CE8  3C031000   LUI V1, 4096
+9D000CEC  AC431034   SW V1, 4148(V0)
+127:                 }
+9D000CF0  03C0E821   ADDU SP, FP, ZERO
+128:                 
+129:                 /**
+130:                   End of File
+131:                 */
+---  c:/users/tbriggs/mplabxprojects/railroad.x/main.c  -------------------------------------------------
+1:                   /**
+2:                     Generated Main Source File
+3:                   
+4:                     Company:
+5:                       Microchip Technology Inc.
+6:                   
+7:                     File Name:
+8:                       main.c
+9:                   
+10:                    Summary:
+11:                      This is the main file generated using PIC32MX MCUs
+12:                  
+13:                    Description:
+14:                      This header file provides implementations for driver APIs for all modules selected in the GUI.
+15:                      Generation Information :
+16:                          Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
+17:                          Device            :  PIC32MX130F064B
+18:                          Driver Version    :  2.00
+19:                      The generated drivers are tested against the following:
+20:                          Compiler          :  XC32 1.42
+21:                          MPLAB             :  MPLAB X 3.55
+22:                  */
+23:                  
+24:                  /*
+25:                      (c) 2016 Microchip Technology Inc. and its subsidiaries. You may use this
+26:                      software and any derivatives exclusively with Microchip products.
+27:                  
+28:                      THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+29:                      EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+30:                      WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+31:                      PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION
+32:                      WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION.
+33:                  
+34:                      IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+35:                      INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+36:                      WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+37:                      BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+38:                      FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+39:                      ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+40:                      THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+41:                  
+42:                      MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
+43:                      TERMS.
+44:                  */
+45:                  
+46:                  #include "mcc_generated_files/mcc.h"
+47:                  
+48:                  typedef enum {
+49:                      LED1, LED2, LED3
+50:                  } led_state_t;
+51:                  
+52:                  typedef enum {
+53:                      OFF, NORMAL, ON
+54:                  } run_mode_t;
+55:                  
+56:                  typedef struct {
+57:                      run_mode_t run_mode;
+58:                      uint32_t run_delay;
+59:                      uint32_t current_delay;
+60:                      led_state_t run_state;
+61:                      uint32_t daylight_count;
+62:                  } global_state_t;
+63:                  
+64:                  volatile global_state_t state;
+65:                  
+66:                  typedef enum {
+67:                      DELAY, DAYLIGHT, DAYLIGHT_SET
+68:                  } adc_channel_t;
+69:                  
+70:                  #define SETPOINT_OFF 50
+71:                  #define SETPOINT_ON 990
+72:                  #define DAYLIGHT_MAX_COUNT 10000
+73:                  
+74:                  typedef struct {
+75:                      uint32_t min;
+76:                      uint32_t max;
+77:                  } range_t;
+78:                  
+79:                  uint32_t compute_ratio(range_t x_range, range_t y_range, uint32_t x)
+80:                  {
+9D000000  27BDFFD0   ADDIU SP, SP, -48
+9D000004  AFBE002C   SW FP, 44(SP)
+9D000008  03A0F021   ADDU FP, SP, ZERO
+9D00000C  AFC40030   SW A0, 48(FP)
+9D000010  AFC50034   SW A1, 52(FP)
+9D000014  AFC60038   SW A2, 56(FP)
+9D000018  AFC7003C   SW A3, 60(FP)
+81:                      // the fixed-point scale factors
+82:                      const uint32_t scale_delta = 1 << 7;
+9D00001C  24020080   ADDIU V0, ZERO, 128
+9D000020  AFC20000   SW V0, 0(FP)
+83:                      const uint32_t scale_x = 1 << 14;
+9D000024  24024000   ADDIU V0, ZERO, 16384
+9D000028  AFC20004   SW V0, 4(FP)
+84:                      
+85:                      // compute deltas
+86:                      uint32_t x_delta = x_range.max - x_range.min;
+9D00002C  8FC30034   LW V1, 52(FP)
+9D000030  8FC20030   LW V0, 48(FP)
+9D000034  00621023   SUBU V0, V1, V0
+9D000038  AFC20008   SW V0, 8(FP)
+87:                      uint32_t y_delta = y_range.max - y_range.min;
+9D00003C  8FC3003C   LW V1, 60(FP)
+9D000040  8FC20038   LW V0, 56(FP)
+9D000044  00621023   SUBU V0, V1, V0
+9D000048  AFC2000C   SW V0, 12(FP)
+88:                      
+89:                      // compute x's place in the range
+90:                      uint32_t x_in_range = x - x_range.min;
+9D00004C  8FC20030   LW V0, 48(FP)
+9D000050  8FC30040   LW V1, 64(FP)
+9D000054  00621023   SUBU V0, V1, V0
+9D000058  AFC20010   SW V0, 16(FP)
+91:                      
+92:                      // convert to fixed point
+93:                      uint32_t scaled_x_delta = x_delta * scale_delta;
+9D00005C  8FC30008   LW V1, 8(FP)
+9D000060  8FC20000   LW V0, 0(FP)
+9D000064  00620018   MULT 0, V1, V0
+9D000068  00001012   MFLO V0
+9D00006C  AFC20014   SW V0, 20(FP)
+94:                      uint32_t scaled_x = x_in_range * scale_x;
+9D000070  8FC30010   LW V1, 16(FP)
+9D000074  8FC20004   LW V0, 4(FP)
+9D000078  00620018   MULT 0, V1, V0
+9D00007C  00001012   MFLO V0
+9D000080  AFC20018   SW V0, 24(FP)
+95:                      
+96:                      // compute the ratio (in fixed point)
+97:                      uint32_t ratio = scaled_x / scaled_x_delta;
+9D000084  8FC30018   LW V1, 24(FP)
+9D000088  8FC20014   LW V0, 20(FP)
+9D00008C  0062001B   DIVU V1, V0
+9D000090  004001F4   TEQ V0, ZERO
+9D000094  00001010   MFHI V0
+9D000098  00001012   MFLO V0
+9D00009C  AFC2001C   SW V0, 28(FP)
+98:                      
+99:                      // compute the ratio
+100:                     uint32_t scaled_y = ratio * y_delta;
+9D0000A0  8FC3001C   LW V1, 28(FP)
+9D0000A4  8FC2000C   LW V0, 12(FP)
+9D0000A8  00620018   MULT 0, V1, V0
+9D0000AC  00001012   MFLO V0
+9D0000B0  AFC20020   SW V0, 32(FP)
+101:                     
+102:                     // convert back from fixed point
+103:                     uint32_t value = scaled_y / (scale_x / scale_delta);
+9D0000B4  8FC30004   LW V1, 4(FP)
+9D0000B8  8FC20000   LW V0, 0(FP)
+9D0000BC  0062001B   DIVU V1, V0
+9D0000C0  004001F4   TEQ V0, ZERO
+9D0000C4  00001010   MFHI V0
+9D0000C8  00001012   MFLO V0
+9D0000CC  8FC30020   LW V1, 32(FP)
+9D0000D0  0062001B   DIVU V1, V0
+9D0000D4  004001F4   TEQ V0, ZERO
+9D0000D8  00001010   MFHI V0
+9D0000DC  00001012   MFLO V0
+9D0000E0  AFC20024   SW V0, 36(FP)
+104:                     
+105:                     return value;
+9D0000E4  8FC20024   LW V0, 36(FP)
+106:                 }
+9D0000E8  03C0E821   ADDU SP, FP, ZERO
+9D0000EC  8FBE002C   LW FP, 44(SP)
+9D0000F0  27BD0030   ADDIU SP, SP, 48
+9D0000F4  03E00008   JR RA
+9D0000F8  00000000   NOP
+107:                 
+108:                 
+109:                 uint32_t compute_delay(uint32_t adc_value)
+110:                 {
+9D0000FC  27BDFFF8   ADDIU SP, SP, -8
+9D000100  AFBE0004   SW FP, 4(SP)
+9D000104  03A0F021   ADDU FP, SP, ZERO
+9D000108  AFC40008   SW A0, 8(FP)
+111:                     static const uint32_t lookup[][2] = {
+112:                         { SETPOINT_OFF, 20 },
+113:                         { 500, 200 },
+114:                         { 900, 1000 },
+115:                         { SETPOINT_ON, 3000 },
+116:                         { UINT32_MAX, 50000 }
+117:                     };
+118:                     
+119:                     return 200;
+9D00010C  240200C8   ADDIU V0, ZERO, 200
+120:                     
+121:                 //    // gracefully handle errors in other parts of the code
+122:                 //    if (adc_value <= SETPOINT_OFF) return lookup[0][1];
+123:                 //    if (adc_value >= SETPOINT_ON) return lookup[3][1]; 
+124:                 //    
+125:                 //    // find the entry in the table that adc_value comes *between*
+126:                 //    int i=0;
+127:                 //    while( (adc_value > lookup[i][0]) && (adc_value > lookup[i+1][0])) {
+128:                 //        i++;
+129:                 //    }
+130:                 //    
+131:                 //    range_t adc_range = { .min = lookup[i][0], .max = lookup[i+1][0] };
+132:                 //    range_t lut_range = { .min = lookup[i][1], .max = lookup[i+1][1] };
+133:                 //    
+134:                 //    //uint32_t ratio = compute_ratio(adc_range, lut_range, adc_value);
+135:                 //    uint32_t ratio = 100;
+136:                 //    
+137:                 //    return ratio;
+138:                 }
+9D000110  03C0E821   ADDU SP, FP, ZERO
+9D000114  8FBE0004   LW FP, 4(SP)
+9D000118  27BD0008   ADDIU SP, SP, 8
+9D00011C  03E00008   JR RA
+9D000120  00000000   NOP
+139:                 
+140:                 
+141:                 void handle_adc( )
+142:                 {
+9D000124  27BDFFD8   ADDIU SP, SP, -40
+9D000128  AFBF0024   SW RA, 36(SP)
+9D00012C  AFBE0020   SW FP, 32(SP)
+9D000130  03A0F021   ADDU FP, SP, ZERO
+143:                     uint32_t samps[ADC1_MAX_CHANNEL_COUNT];
+144:                   
+145:                     ADC1_ConversionResultBufferGet(&samps, ADC1_MAX_CHANNEL_COUNT);
+9D000134  27C20014   ADDIU V0, FP, 20
+9D000138  00402021   ADDU A0, V0, ZERO
+9D00013C  24050003   ADDIU A1, ZERO, 3
+9D000140  0F4002C8   JAL ADC1_ConversionResultBufferGet
+9D000144  00000000   NOP
+146:                 
+147:                     if (samps[DAYLIGHT_SET] < SETPOINT_OFF) 
+9D000148  8FC2001C   LW V0, 28(FP)
+9D00014C  2C420032   SLTIU V0, V0, 50
+9D000150  10400005   BEQ V0, ZERO, 0x9D000168
+9D000154  00000000   NOP
+148:                         state.run_mode = OFF;
+9D000158  3C02A000   LUI V0, -24576
+9D00015C  AC400204   SW ZERO, 516(V0)
+9D000160  0B400096   J 0x9D000258
+9D000164  00000000   NOP
+149:                     else if (samps[DAYLIGHT_SET] > SETPOINT_ON)
+9D000168  8FC2001C   LW V0, 28(FP)
+9D00016C  2C4203DF   SLTIU V0, V0, 991
+9D000170  14400006   BNE V0, ZERO, 0x9D00018C
+9D000174  00000000   NOP
+150:                         state.run_mode = ON;
+9D000178  3C02A000   LUI V0, -24576
+9D00017C  24030002   ADDIU V1, ZERO, 2
+9D000180  AC430204   SW V1, 516(V0)
+9D000184  0B400096   J 0x9D000258
+9D000188  00000000   NOP
+151:                     else {
+152:                         
+153:                         if (samps[DAYLIGHT] < samps[DAYLIGHT_SET]) {
+9D00018C  8FC30018   LW V1, 24(FP)
+9D000190  8FC2001C   LW V0, 28(FP)
+9D000194  0062102B   SLTU V0, V1, V0
+9D000198  10400017   BEQ V0, ZERO, 0x9D0001F8
+9D00019C  00000000   NOP
+154:                             state.daylight_count++;
+9D0001A0  3C02A000   LUI V0, -24576
+9D0001A4  24420204   ADDIU V0, V0, 516
+9D0001A8  8C420010   LW V0, 16(V0)
+9D0001AC  24430001   ADDIU V1, V0, 1
+9D0001B0  3C02A000   LUI V0, -24576
+9D0001B4  24420204   ADDIU V0, V0, 516
+9D0001B8  AC430010   SW V1, 16(V0)
+155:                         
+156:                             if (state.daylight_count > DAYLIGHT_MAX_COUNT)
+9D0001BC  3C02A000   LUI V0, -24576
+9D0001C0  24420204   ADDIU V0, V0, 516
+9D0001C4  8C420010   LW V0, 16(V0)
+9D0001C8  2C422711   SLTIU V0, V0, 10001
+9D0001CC  14400005   BNE V0, ZERO, 0x9D0001E4
+9D0001D0  00000000   NOP
+157:                                 state.run_mode = OFF;
+9D0001D4  3C02A000   LUI V0, -24576
+9D0001D8  AC400204   SW ZERO, 516(V0)
+9D0001DC  0B400096   J 0x9D000258
+9D0001E0  00000000   NOP
+158:                             else
+159:                                 state.run_mode = NORMAL;
+9D0001E4  3C02A000   LUI V0, -24576
+9D0001E8  24030001   ADDIU V1, ZERO, 1
+9D0001EC  AC430204   SW V1, 516(V0)
+9D0001F0  0B400096   J 0x9D000258
+9D0001F4  00000000   NOP
+160:                         }
+161:                         else {
+162:                             if (state.daylight_count > 0)
+9D0001F8  3C02A000   LUI V0, -24576
+9D0001FC  24420204   ADDIU V0, V0, 516
+9D000200  8C420010   LW V0, 16(V0)
+9D000204  10400008   BEQ V0, ZERO, 0x9D000228
+9D000208  00000000   NOP
+163:                                 state.daylight_count--;
+9D00020C  3C02A000   LUI V0, -24576
+9D000210  24420204   ADDIU V0, V0, 516
+9D000214  8C420010   LW V0, 16(V0)
+9D000218  2443FFFF   ADDIU V1, V0, -1
+9D00021C  3C02A000   LUI V0, -24576
+9D000220  24420204   ADDIU V0, V0, 516
+9D000224  AC430010   SW V1, 16(V0)
+164:                             
+165:                             if (state.daylight_count == 0)
+9D000228  3C02A000   LUI V0, -24576
+9D00022C  24420204   ADDIU V0, V0, 516
+9D000230  8C420010   LW V0, 16(V0)
+9D000234  14400006   BNE V0, ZERO, 0x9D000250
+9D000238  00000000   NOP
+166:                                 state.run_mode = NORMAL;
+9D00023C  3C02A000   LUI V0, -24576
+9D000240  24030001   ADDIU V1, ZERO, 1
+9D000244  AC430204   SW V1, 516(V0)
+9D000248  0B400096   J 0x9D000258
+9D00024C  00000000   NOP
+167:                             else
+168:                                 state.run_mode = OFF;
+9D000250  3C02A000   LUI V0, -24576
+9D000254  AC400204   SW ZERO, 516(V0)
+169:                             
+170:                         }
+171:                     }
+172:                     
+173:                     if ((state.run_mode == NORMAL) || (state.run_mode == ON)){
+9D000258  3C02A000   LUI V0, -24576
+9D00025C  8C430204   LW V1, 516(V0)
+9D000260  24020001   ADDIU V0, ZERO, 1
+9D000264  10620006   BEQ V1, V0, .LBB2
+9D000268  00000000   NOP
+9D00026C  3C02A000   LUI V0, -24576
+9D000270  8C430204   LW V1, 516(V0)
+9D000274  24020002   ADDIU V0, ZERO, 2
+9D000278  1462000A   BNE V1, V0, .LBE2
+9D00027C  00000000   NOP
+174:                         uint32_t value_delay = samps[DELAY];
+9D000280  8FC20014   LW V0, 20(FP)
+9D000284  AFC20010   SW V0, 16(FP)
+175:                         state.run_delay = compute_delay(value_delay);
+9D000288  8FC40010   LW A0, 16(FP)
+9D00028C  0F40003F   JAL compute_delay
+9D000290  00000000   NOP
+9D000294  00401821   ADDU V1, V0, ZERO
+9D000298  3C02A000   LUI V0, -24576
+9D00029C  24420204   ADDIU V0, V0, 516
+9D0002A0  AC430004   SW V1, 4(V0)
+176:                     }
+177:                     
+178:                     //ADC1_Start();
+179:                 }
+9D0002A4  03C0E821   ADDU SP, FP, ZERO
+9D0002A8  8FBF0024   LW RA, 36(SP)
+9D0002AC  8FBE0020   LW FP, 32(SP)
+9D0002B0  27BD0028   ADDIU SP, SP, 40
+9D0002B4  03E00008   JR RA
+9D0002B8  00000000   NOP
+180:                 
+181:                 void set_leds(int ledA, int ledB, int ledC)
+182:                 {
+9D0002BC  27BDFFF8   ADDIU SP, SP, -8
+9D0002C0  AFBE0004   SW FP, 4(SP)
+9D0002C4  03A0F021   ADDU FP, SP, ZERO
+9D0002C8  AFC40008   SW A0, 8(FP)
+9D0002CC  AFC5000C   SW A1, 12(FP)
+9D0002D0  AFC60010   SW A2, 16(FP)
+183:                     if (ledA == 1) {
+9D0002D4  8FC30008   LW V1, 8(FP)
+9D0002D8  24020001   ADDIU V0, ZERO, 1
+9D0002DC  1462000D   BNE V1, V0, 0x9D000314
+9D0002E0  00000000   NOP
+184:                         LATBbits.LATB2 = 1;
+9D0002E4  3C03BF88   LUI V1, -16504
+9D0002E8  94626130   LHU V0, 24880(V1)
+9D0002EC  24040001   ADDIU A0, ZERO, 1
+9D0002F0  7C821084   INS V0, A0, 2, 1
+9D0002F4  A4626130   SH V0, 24880(V1)
+185:                         LATBbits.LATB8 = 1;
+9D0002F8  3C03BF88   LUI V1, -16504
+9D0002FC  94626130   LHU V0, 24880(V1)
+9D000300  24040001   ADDIU A0, ZERO, 1
+9D000304  7C824204   INS V0, A0, 8, 1
+9D000308  A4626130   SH V0, 24880(V1)
+9D00030C  0B4000CD   J 0x9D000334
+9D000310  00000000   NOP
+186:                     }
+187:                     else {
+188:                         LATBbits.LATB2 = 0;
+9D000314  3C03BF88   LUI V1, -16504
+9D000318  94626130   LHU V0, 24880(V1)
+9D00031C  7C021084   INS V0, ZERO, 2, 1
+9D000320  A4626130   SH V0, 24880(V1)
+189:                         LATBbits.LATB8 = 0;
+9D000324  3C03BF88   LUI V1, -16504
+9D000328  94626130   LHU V0, 24880(V1)
+9D00032C  7C024204   INS V0, ZERO, 8, 1
+9D000330  A4626130   SH V0, 24880(V1)
+190:                     }
+191:                     
+192:                     if (ledB == 1) {
+9D000334  8FC3000C   LW V1, 12(FP)
+9D000338  24020001   ADDIU V0, ZERO, 1
+9D00033C  1462000D   BNE V1, V0, 0x9D000374
+9D000340  00000000   NOP
+193:                         LATBbits.LATB3 = 1;
+9D000344  3C03BF88   LUI V1, -16504
+9D000348  94626130   LHU V0, 24880(V1)
+9D00034C  24040001   ADDIU A0, ZERO, 1
+9D000350  7C8218C4   INS V0, A0, 3, 1
+9D000354  A4626130   SH V0, 24880(V1)
+194:                         LATBbits.LATB7 = 1;
+9D000358  3C03BF88   LUI V1, -16504
+9D00035C  94626130   LHU V0, 24880(V1)
+9D000360  24040001   ADDIU A0, ZERO, 1
+9D000364  7C8239C4   INS V0, A0, 7, 1
+9D000368  A4626130   SH V0, 24880(V1)
+9D00036C  0B4000E5   J 0x9D000394
+9D000370  00000000   NOP
+195:                     }
+196:                     else {
+197:                         LATBbits.LATB3 = 0;
+9D000374  3C03BF88   LUI V1, -16504
+9D000378  94626130   LHU V0, 24880(V1)
+9D00037C  7C0218C4   INS V0, ZERO, 3, 1
+9D000380  A4626130   SH V0, 24880(V1)
+198:                         LATBbits.LATB7 = 0;
+9D000384  3C03BF88   LUI V1, -16504
+9D000388  94626130   LHU V0, 24880(V1)
+9D00038C  7C0239C4   INS V0, ZERO, 7, 1
+9D000390  A4626130   SH V0, 24880(V1)
+199:                     }
+200:                     
+201:                     if (ledC == 1) {
+9D000394  8FC30010   LW V1, 16(FP)
+9D000398  24020001   ADDIU V0, ZERO, 1
+9D00039C  1462000D   BNE V1, V0, 0x9D0003D4
+9D0003A0  00000000   NOP
+202:                         LATAbits.LATA2 = 1;
+9D0003A4  3C03BF88   LUI V1, -16504
+9D0003A8  90626030   LBU V0, 24624(V1)
+9D0003AC  24040001   ADDIU A0, ZERO, 1
+9D0003B0  7C821084   INS V0, A0, 2, 1
+9D0003B4  A0626030   SB V0, 24624(V1)
+203:                         LATBbits.LATB6 = 1;
+9D0003B8  3C03BF88   LUI V1, -16504
+9D0003BC  94626130   LHU V0, 24880(V1)
+9D0003C0  24040001   ADDIU A0, ZERO, 1
+9D0003C4  7C823184   INS V0, A0, 6, 1
+9D0003C8  A4626130   SH V0, 24880(V1)
+9D0003CC  0B4000FD   J 0x9D0003F4
+9D0003D0  00000000   NOP
+204:                     }
+205:                     else {
+206:                         LATAbits.LATA2 = 0;
+9D0003D4  3C03BF88   LUI V1, -16504
+9D0003D8  90626030   LBU V0, 24624(V1)
+9D0003DC  7C021084   INS V0, ZERO, 2, 1
+9D0003E0  A0626030   SB V0, 24624(V1)
+207:                         LATBbits.LATB6 = 0;
+9D0003E4  3C03BF88   LUI V1, -16504
+9D0003E8  94626130   LHU V0, 24880(V1)
+9D0003EC  7C023184   INS V0, ZERO, 6, 1
+9D0003F0  A4626130   SH V0, 24880(V1)
+208:                     }
+209:                 }
+9D0003F4  03C0E821   ADDU SP, FP, ZERO
+9D0003F8  8FBE0004   LW FP, 4(SP)
+9D0003FC  27BD0008   ADDIU SP, SP, 8
+9D000400  03E00008   JR RA
+9D000404  00000000   NOP
+210:                 
+211:                 
+212:                 void handle_timer( )
+213:                 {
+9D000408  27BDFFE8   ADDIU SP, SP, -24
+9D00040C  AFBF0014   SW RA, 20(SP)
+9D000410  AFBE0010   SW FP, 16(SP)
+9D000414  03A0F021   ADDU FP, SP, ZERO
+214:                     if (state.run_mode == OFF) {
+9D000418  3C02A000   LUI V0, -24576
+9D00041C  8C420204   LW V0, 516(V0)
+9D000420  14400007   BNE V0, ZERO, 0x9D000440
+9D000424  00000000   NOP
+215:                         state.current_delay = 0;
+9D000428  3C02A000   LUI V0, -24576
+9D00042C  24420204   ADDIU V0, V0, 516
+9D000430  AC400008   SW ZERO, 8(V0)
+216:                         state.run_state = LED1;
+9D000434  3C02A000   LUI V0, -24576
+9D000438  24420204   ADDIU V0, V0, 516
+9D00043C  AC40000C   SW ZERO, 12(V0)
+217:                     }
+218:                     
+219:                     state.current_delay++;
+9D000440  3C02A000   LUI V0, -24576
+9D000444  24420204   ADDIU V0, V0, 516
+9D000448  8C420008   LW V0, 8(V0)
+9D00044C  24430001   ADDIU V1, V0, 1
+9D000450  3C02A000   LUI V0, -24576
+9D000454  24420204   ADDIU V0, V0, 516
+9D000458  AC430008   SW V1, 8(V0)
+220:                     if (state.current_delay > state.run_delay) {
+9D00045C  3C02A000   LUI V0, -24576
+9D000460  24420204   ADDIU V0, V0, 516
+9D000464  8C430008   LW V1, 8(V0)
+9D000468  3C02A000   LUI V0, -24576
+9D00046C  24420204   ADDIU V0, V0, 516
+9D000470  8C420004   LW V0, 4(V0)
+9D000474  0043102B   SLTU V0, V0, V1
+9D000478  10400027   BEQ V0, ZERO, 0x9D000518
+9D00047C  00000000   NOP
+221:                         state.current_delay = 0;
+9D000480  3C02A000   LUI V0, -24576
+9D000484  24420204   ADDIU V0, V0, 516
+9D000488  AC400008   SW ZERO, 8(V0)
+222:                         
+223:                         switch(state.run_state) {
+9D00048C  3C02A000   LUI V0, -24576
+9D000490  24420204   ADDIU V0, V0, 516
+9D000494  8C42000C   LW V0, 12(V0)
+9D000498  24030001   ADDIU V1, ZERO, 1
+9D00049C  1043000F   BEQ V0, V1, 0x9D0004DC
+9D0004A0  00000000   NOP
+9D0004A4  2C430001   SLTIU V1, V0, 1
+9D0004A8  14600006   BNE V1, ZERO, 0x9D0004C4
+9D0004AC  00000000   NOP
+9D0004B0  24030002   ADDIU V1, ZERO, 2
+9D0004B4  1043000F   BEQ V0, V1, 0x9D0004F4
+9D0004B8  00000000   NOP
+9D0004BC  0B400142   J 0x9D000508
+9D0004C0  00000000   NOP
+224:                             case LED1: state.run_state = LED2;
+9D0004C4  3C02A000   LUI V0, -24576
+9D0004C8  24420204   ADDIU V0, V0, 516
+9D0004CC  24030001   ADDIU V1, ZERO, 1
+9D0004D0  AC43000C   SW V1, 12(V0)
+225:                             break;
+9D0004D4  0B400146   J 0x9D000518
+9D0004D8  00000000   NOP
+226:                             
+227:                             case LED2: state.run_state = LED3;
+9D0004DC  3C02A000   LUI V0, -24576
+9D0004E0  24420204   ADDIU V0, V0, 516
+9D0004E4  24030002   ADDIU V1, ZERO, 2
+9D0004E8  AC43000C   SW V1, 12(V0)
+228:                             break;
+9D0004EC  0B400146   J 0x9D000518
+9D0004F0  00000000   NOP
+229:                             
+230:                             case LED3: state.run_state = LED1;
+9D0004F4  3C02A000   LUI V0, -24576
+9D0004F8  24420204   ADDIU V0, V0, 516
+9D0004FC  AC40000C   SW ZERO, 12(V0)
+231:                             break;
+9D000500  0B400146   J 0x9D000518
+9D000504  00000000   NOP
+232:                             
+233:                             default: state.run_state = LED1;
+9D000508  3C02A000   LUI V0, -24576
+9D00050C  24420204   ADDIU V0, V0, 516
+9D000510  AC40000C   SW ZERO, 12(V0)
+234:                             break;
+9D000514  00000000   NOP
+235:                             
+236:                         } // end switch
+237:                     } // end if
+238:                     
+239:                     if (state.run_mode == OFF){
+9D000518  3C02A000   LUI V0, -24576
+9D00051C  8C420204   LW V0, 516(V0)
+9D000520  14400008   BNE V0, ZERO, 0x9D000544
+9D000524  00000000   NOP
+240:                         set_leds(0,0,0);
+9D000528  00002021   ADDU A0, ZERO, ZERO
+9D00052C  00002821   ADDU A1, ZERO, ZERO
+9D000530  00003021   ADDU A2, ZERO, ZERO
+9D000534  0F4000AF   JAL set_leds
+9D000538  00000000   NOP
+9D00053C  0B40017A   J 0x9D0005E8
+9D000540  00000000   NOP
+241:                     }
+242:                     else {
+243:                         switch(state.run_state) {
+9D000544  3C02A000   LUI V0, -24576
+9D000548  24420204   ADDIU V0, V0, 516
+9D00054C  8C42000C   LW V0, 12(V0)
+9D000550  24030001   ADDIU V1, ZERO, 1
+9D000554  10430010   BEQ V0, V1, 0x9D000598
+9D000558  00000000   NOP
+9D00055C  2C430001   SLTIU V1, V0, 1
+9D000560  14600006   BNE V1, ZERO, 0x9D00057C
+9D000564  00000000   NOP
+9D000568  24030002   ADDIU V1, ZERO, 2
+9D00056C  10430011   BEQ V0, V1, 0x9D0005B4
+9D000570  00000000   NOP
+9D000574  0B400174   J 0x9D0005D0
+9D000578  00000000   NOP
+244:                             case LED1: set_leds(1,0,0);
+9D00057C  24040001   ADDIU A0, ZERO, 1
+9D000580  00002821   ADDU A1, ZERO, ZERO
+9D000584  00003021   ADDU A2, ZERO, ZERO
+9D000588  0F4000AF   JAL set_leds
+9D00058C  00000000   NOP
+245:                             break;
+9D000590  0B40017A   J 0x9D0005E8
+9D000594  00000000   NOP
+246:                             
+247:                             case LED2: set_leds(0,1,0);
+9D000598  00002021   ADDU A0, ZERO, ZERO
+9D00059C  24050001   ADDIU A1, ZERO, 1
+9D0005A0  00003021   ADDU A2, ZERO, ZERO
+9D0005A4  0F4000AF   JAL set_leds
+9D0005A8  00000000   NOP
+248:                             break;
+9D0005AC  0B40017A   J 0x9D0005E8
+9D0005B0  00000000   NOP
+249:                             
+250:                             case LED3: set_leds(0,0,1);
+9D0005B4  00002021   ADDU A0, ZERO, ZERO
+9D0005B8  00002821   ADDU A1, ZERO, ZERO
+9D0005BC  24060001   ADDIU A2, ZERO, 1
+9D0005C0  0F4000AF   JAL set_leds
+9D0005C4  00000000   NOP
+251:                             break;
+9D0005C8  0B40017A   J 0x9D0005E8
+9D0005CC  00000000   NOP
+252:                             
+253:                             default: set_leds(0,0,0);
+9D0005D0  00002021   ADDU A0, ZERO, ZERO
+9D0005D4  00002821   ADDU A1, ZERO, ZERO
+9D0005D8  00003021   ADDU A2, ZERO, ZERO
+9D0005DC  0F4000AF   JAL set_leds
+9D0005E0  00000000   NOP
+254:                             break;
+9D0005E4  00000000   NOP
+255:                         } // end switch
+256:                     } // end else
+257:                 
+258:                 }  // end handle_timer
+9D0005E8  03C0E821   ADDU SP, FP, ZERO
+9D0005EC  8FBF0014   LW RA, 20(SP)
+9D0005F0  8FBE0010   LW FP, 16(SP)
+9D0005F4  27BD0018   ADDIU SP, SP, 24
+9D0005F8  03E00008   JR RA
+9D0005FC  00000000   NOP
+259:                 
+260:                 /*
+261:                                          Main application
+262:                  */
+263:                 int main(void)
+264:                 {
+9D000600  27BDFFE8   ADDIU SP, SP, -24
+9D000604  AFBF0014   SW RA, 20(SP)
+9D000608  AFBE0010   SW FP, 16(SP)
+9D00060C  03A0F021   ADDU FP, SP, ZERO
+265:                 //    // initialize the device
+266:                     SYSTEM_Initialize();
+9D000610  0F400364   JAL SYSTEM_Initialize
+9D000614  00000000   NOP
+267:                     
+268:                     
+269:                     while (1)
+270:                     {
+271:                         // Add your application code
+272:                     }
+9D000618  0B400186   J .LVL43
+273:                 
+274:                     return -1;
+275:                 }
+276:                 /**
+277:                  End of File
+278:                 */
+---  c:/program files (x86)/microchip/xc32/v2.20/pic32mx/lib/crt0.S  ------------------------------------
+                                                  1:     /*********************************************************************
+                                                  2:      *
+                                                  3:      *                  C Runtime Startup
+                                                  4:      *
+                                                  5:      *********************************************************************
+                                                  6:      * Filename:        crt0.S
+                                                  7:      *
+                                                  8:      * Processor:       PIC32
+                                                  9:      *
+                                                  10:     * Compiler:        MPLAB XC32
+                                                  11:     *                  MPLAB X IDE
+                                                  12:     * Company:         Microchip Technology Inc.
+                                                  13:     *
+                                                  14:     * Software License Agreement
+                                                  15:     *
+                                                  16:     * Copyright (c) 2014, Microchip Technology Inc. and its subsidiaries ("Microchip")
+                                                  17:     * All rights reserved.
+                                                  18:     *
+                                                  19:     * This software is developed by Microchip Technology Inc. and its
+                                                  20:     * subsidiaries ("Microchip").
+                                                  21:     *
+                                                  22:     * Redistribution and use in source and binary forms, with or without
+                                                  23:     * modification, are permitted provided that the following conditions are met:
+                                                  24:     *
+                                                  25:     * 1.      Redistributions of source code must retain the above copyright
+                                                  26:     * notice, this list of conditions and the following disclaimer.
+                                                  27:     *
+                                                  28:     * 2.      Redistributions in binary form must reproduce the above copyright
+                                                  29:     * notice, this list of conditions and the following disclaimer in the
+                                                  30:     * documentation and/or other materials provided with the distribution.
+                                                  31:     *
+                                                  32:     * 3.      Microchip's name may not be used to endorse or promote products
+                                                  33:     * derived from this software without specific prior written permission.
+                                                  34:     *
+                                                  35:     * THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED
+                                                  36:     * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+                                                  37:     * MERCHANTABILITY AND FITNESS FOR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+                                                  38:     * MICROCHIP BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                                                  39:     * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+                                                  40:     * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS;
+                                                  41:     * OR BUSINESS INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+                                                  42:     * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+                                                  43:     * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+                                                  44:     * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                                                  45:     *
+                                                  46:     ********************************************************************/
+                                                  47:    
+                                                  48:    #include "xc.h"
+                                                  49:    #include <cp0defs.h>
+                                                  50:    
+                                                  51:    #ifdef __LIBBUILD__
+                                                  52:       # Replace the standard debugging information with a simple filename. This
+                                                  53:       # prevents the library build directory from showing up in MPLAB IDE. It
+                                                  54:       # also effectively disables source-line debugging.
+                                                  55:       .file 1 "libpic32/startup/crt0.S"
+                                                  56:       .loc 1 0
+                                                  57:    #endif
+                                                  58:    
+                                                  59:    #if (__XC32_VERSION > 1000) && !defined(CPP_INIT)
+                                                  60:    #define CPP_INIT
+                                                  61:    #endif
+                                                  62:    
+                                                  63:    #if !defined(PIC32_SRS_SET_COUNT)
+                                                  64:    #  if defined(__PIC32_SRS_SET_COUNT)
+                                                  65:    #    define PIC32_SRS_SET_COUNT __PIC32_SRS_SET_COUNT
+                                                  66:    #  else
+                                                  67:    #    warning PIC32_SRS_SET_COUNT not defined on build line
+                                                  68:    #    define PIC32_SRS_SET_COUNT 2
+                                                  69:    #  endif
+                                                  70:    #endif
+                                                  71:    
+                                                  72:    #if defined(__PIC32MX) || defined(__PIC32MM) || defined(__PIC32MZ)
+                                                  73:    #define INIT_DATA 1
+                                                  74:    #endif
+                                                  75:    
+                                                  76:    /* This file contains 32-bit assembly code */
+                                                  77:           .set nomips16
+                                                  78:    
+                                                  79:            ##################################################################
+                                                  80:            # Entry point of the entire application
+                                                  81:            ##################################################################
+                                                  82:            .section .reset,code,keep
+                                                  83:            .align 2
+                                                  84:            .set noreorder
+                                                  85:            .ent _reset
+                                                  86:    
+                                                  87:    ############################
+                                                  88:    # Begin ISA switching code #
+                                                  89:    ############################
+                                                  90:    
+                                                  91:    #if defined (__mips_micromips)
+                                                  92:            .set micromips
+                                                  93:    #endif
+                                                  94:    
+                                                  95:    #if (defined(__PIC32_HAS_MICROMIPS)) && (defined(__PIC32_HAS_MIPS32R2))
+                                                  96:    _reset:
+                                                  97:            .word 0x10000003     /* MIPS32:    branch forward 0x10 bytes from here  */
+                                                  98:                                 /* MicroMIPS: ADDI32 $0, $0, 0x0007 (nop)          */
+                                                  99:                                 /* DO NOT change the relative branch               */
+                                                  100:   
+                                                  101:           .word 0x00000000     /* NOP */
+                                                  102:   __reset_micromips_isa:
+                                                  103:           .set    micromips
+                                                  104:           jal     _startup
+                                                  105:           nop
+                                                  106:   
+                                                  107:           .align 2
+                                                  108:           /* Device not in proper ISA mode */
+                                                  109:           .set nomicromips
+                                                  110:   __reset_switch_isa:
+                                                  111:           jal _startup
+                                                  112:           nop
+                                                  113:   
+                                                  114:   #else
+                                                  115:   
+                                                  116:   _reset:
+BFC00000  0FF00002   JAL 0xBFC00008               117:           jal _startup
+BFC00004  00000000   NOP                          118:           nop
+                                                  119:   
+                                                  120:   #endif  /* __PIC32_HAS_MICROMIPS */
+                                                  121:   
+                                                  122:           .align 2
+                                                  123:           .end _reset
+                                                  124:           .globl _reset
+                                                  125:           .size _reset, .-_reset
+                                                  126:   
+                                                  127:           .section .reset.startup,code,keep
+                                                  128:           .align 2
+                                                  129:           .set noreorder
+                                                  130:   
+                                                  131:   #if defined (__mips_micromips)
+                                                  132:           .set micromips
+                                                  133:   #else
+                                                  134:           .set nomicromips
+                                                  135:   #endif
+                                                  136:   
+                                                  137:   ############################
+                                                  138:   # End ISA switching code   #
+                                                  139:   ############################
+                                                  140:   
+                                                  141:           ##################################################################
+                                                  142:           # Startup code
+                                                  143:           ##################################################################
+                                                  144:           .align 2
+                                                  145:           .globl _startup
+                                                  146:           .set noreorder
+                                                  147:           .ent _startup
+                                                  148:   _startup:
+                                                  149:           ##################################################################
+                                                  150:           # If entered because of an NMI, jump to the NMI handler.
+                                                  151:           ##################################################################
+BFC00008  401A6000   MFC0 K0, Status              152:           mfc0    k0,_CP0_STATUS
+BFC0000C  7F5A04C0   EXT K0, K0, 19, 1            153:           ext     k0,k0,19,1              # Extract NMI bit
+BFC00010  13400005   BEQ K0, ZERO, 0xBFC00028     154:           beqz    k0,_no_nmi
+BFC00014  00000000   NOP                          155:           nop
+BFC00018  3C1A9D00   LUI K0, -25344               156:           la      k0,_nmi_handler
+BFC00020  03400008   JR K0                        157:           jr      k0
+BFC00024  00000000   NOP                          158:           nop
+                                                  159:   _no_nmi:
+                                                  160:   
+                                                  161:           ##################################################################
+                                                  162:           # Initialize Stack Pointer
+                                                  163:           #   _stack is initialized by the linker script to point to the
+                                                  164:           #    starting location of the stack in DRM
+                                                  165:           ##################################################################
+BFC00028  3C1DA000   LUI SP, -24576               166:           la      sp,_stack
+                                                  167:   
+                                                  168:           ##################################################################
+                                                  169:           # Initialize Global Pointer
+                                                  170:           #   _gp is initialized by the linker script to point to "middle"
+                                                  171:           #   of the small variables region
+                                                  172:           ##################################################################
+BFC00030  3C1CA001   LUI GP, -24575               173:           la      gp,_gp
+                                                  174:   
+                                                  175:   #if (PIC32_SRS_SET_COUNT == 2)
+                                                  176:           ##################################################################
+                                                  177:           # Initialize Global Pointer in Shadow Set
+                                                  178:           #   The SRSCtl's PSS field must be set to the shadow set in which
+                                                  179:           #   to initialize the global pointer.  Since we have only a
+                                                  180:           #   single shadow set (besides the normal), we will initialize
+                                                  181:           #   SRSCtl<PSS> to SRSCtl<HSS>.  We then write the global pointer
+                                                  182:           #   to the previous shadow set to ensure that on interrupt, the
+                                                  183:           #   global pointer has been initialized.
+                                                  184:           ##################################################################
+                                                  185:           mfc0    t1,_CP0_SRSCTL          # Read SRSCtl register
+                                                  186:           add     t3,t1,zero              # Save off current SRSCtl
+                                                  187:           ext     t2,t1,26,4              # to obtain HSS field
+                                                  188:           ins     t1,t2,6,4               # Put HSS field
+                                                  189:           mtc0    t1,_CP0_SRSCTL          # into SRSCtl<PSS>
+                                                  190:           ehb                             # Clear hazard before using new SRSCTL
+                                                  191:           wrpgpr  gp,gp                   # Set global pointer in PSS
+                                                  192:           mtc0    t3,_CP0_SRSCTL          # Restore SRSCtl
+                                                  193:           ehb
+                                                  194:   
+                                                  195:   #elif (PIC32_SRS_SET_COUNT > 2)
+                                                  196:           ##################################################################
+                                                  197:           # Initialize Global Pointer in Shadow Set(s)
+                                                  198:           #   The SRSCtl PSS field must be set to the shadow set in which
+                                                  199:           #   to initialize the global pointer.  We will initialize
+                                                  200:           #   SRSCtl<PSS> to the number of reg sets and work down to set zero.
+                                                  201:           #   We write the global pointer to the previous shadow set to
+                                                  202:           #   ensure that on interrupt, the global pointer has been
+                                                  203:           #   initialized.
+                                                  204:           ##################################################################
+                                                  205:           mfc0    t1,_CP0_SRSCTL          # Read SRSCtl register
+                                                  206:           add     t3,t1,zero              # Save off current SRSCtl
+                                                  207:   
+                                                  208:           li      t2,(PIC32_SRS_SET_COUNT-1)
+                                                  209:   
+                                                  210:   1:      ins     t1,t2,6,4               # Put next shadow set field
+                                                  211:           mtc0    t1,_CP0_SRSCTL          # into SRSCtl<PSS>
+                                                  212:           ehb                             # Clear hazard before using new SRSCTL
+                                                  213:           wrpgpr  gp,gp                   # Set global pointer in PSS
+                                                  214:   
+                                                  215:           addiu   t2,t2,-1                # Next lower shadow set
+                                                  216:                                           # Loop for all sets
+                                                  217:           bne     t2,$0,1b                # Down to zero (normal GPR set)
+                                                  218:           nop
+                                                  219:   
+                                                  220:           mtc0    t3,_CP0_SRSCTL          # Restore SRSCtl
+                                                  221:           ehb
+                                                  222:   
+                                                  223:   #endif /* (PIC32_SRS_SET_COUNT > 2) */
+                                                  224:   
+                                                  225:           ##################################################################
+                                                  226:           # Call the "on reset" procedure
+                                                  227:           ##################################################################
+BFC00038  3C089D00   LUI T0, -25344               228:           la      t0,_on_reset
+BFC00040  0100F809   JALR T0                      229:           jalr    t0
+BFC00044  00000000   NOP                          230:           nop
+                                                  231:   
+                                                  232:   #if defined(INIT_MMU_MZ_FIXED) || defined(__PIC32_HAS_MMU_MZ_FIXED)
+                                                  233:           ##################################################################
+                                                  234:           # Initialize TLB for fixed mapping to EBI and SQI
+                                                  235:           ##################################################################
+                                                  236:           .extern __pic32_tlb_init_ebi_sqi
+                                                  237:           la      t0,__pic32_tlb_init_ebi_sqi
+                                                  238:           jalr    t0
+                                                  239:           nop
+                                                  240:   #endif
+                                                  241:   
+                                                  242:           ##################################################################
+                                                  243:           # Clear uninitialized data sections
+                                                  244:           ##################################################################
+                                                  245:   _start_bss_init:
+BFC00048  3C08A000   LUI T0, -24576               246:           la      t0,_bss_begin
+BFC00050  3C09A000   LUI T1, -24576               247:           la      t1,_bss_end
+BFC00058  10000003   BEQ ZERO, ZERO, 0xBFC00068   248:           b       _bss_check
+BFC0005C  00000000   NOP                          249:           nop
+                                                  250:   
+                                                  251:   _bss_init:
+BFC00060  AD000000   SW ZERO, 0(T0)               252:           sw      zero,0x0(t0)
+BFC00064  25080004   ADDIU T0, T0, 4              253:           addu    t0,4
+                                                  254:   _bss_check:
+BFC00068  0109082B   SLTU AT, T0, T1              255:           bltu    t0,t1,_bss_init
+BFC00070  00000000   NOP                          256:           nop
+                                                  257:   
+                                                  258:   #if defined(INIT_L1_CACHE) || defined(__PIC32_HAS_L1CACHE)
+                                                  259:           ##################################################################
+                                                  260:           # Initialize L1 cache. This must be done after bss clearing
+                                                  261:           # since the _bss_end symbol may not be cache-line aligned.
+                                                  262:           ##################################################################
+                                                  263:           .extern   __pic32_init_cache
+                                                  264:           la      t0,__pic32_init_cache
+                                                  265:           jalr    t0
+                                                  266:           nop
+                                                  267:   #endif
+                                                  268:   
+                                                  269:   #if defined(INIT_DATA) || defined(__PIC32_HAS_INIT_DATA)
+                                                  270:   
+                                                  271:   #if defined(__LIBBUILD__) /* Prebuilt crt0.o file */
+                                                  272:   
+                                                  273:           ##################################################################
+                                                  274:           # Initialize data using the linker-generated .dinit table
+                                                  275:           # For use with XC32 versions prior to XC32 v2.10 only.
+                                                  276:           ##################################################################
+                                                  277:           .equiv FMT_CLEAR,0
+                                                  278:           .equiv FMT_COPY,1
+                                                  279:   _dinit_init:
+                                                  280:           la      t0,_dinit_addr
+                                                  281:   
+                                                  282:   #define SRC t0
+                                                  283:   #define DST t1
+                                                  284:   #define LEN t2
+                                                  285:   #define FMT t3
+                                                  286:   
+                                                  287:   0:      lw      DST,0(SRC)
+                                                  288:           beqz    DST,9f
+                                                  289:           addu    SRC,4
+                                                  290:           lw      LEN,0(SRC)
+                                                  291:           addu    SRC,4
+                                                  292:           lw      FMT,0(SRC)
+                                                  293:           beq     FMT,$0,_dinit_clear
+                                                  294:           addu    SRC,4
+                                                  295:   
+                                                  296:   _dinit_copy:
+                                                  297:           lbu     t4,0(SRC)
+                                                  298:           subu    LEN,1
+                                                  299:           addu    SRC,1
+                                                  300:           sb      t4,0(DST)
+                                                  301:           bne     LEN,$0,_dinit_copy
+                                                  302:           addu    DST,1
+                                                  303:   
+                                                  304:           b       _dinit_end
+                                                  305:           nop
+                                                  306:   
+                                                  307:   _dinit_clear:
+                                                  308:           sb      $0,(DST)
+                                                  309:           subu    LEN,1
+                                                  310:           bne     LEN,$0,_dinit_clear
+                                                  311:           addu    DST,1
+                                                  312:   
+                                                  313:   _dinit_end:
+                                                  314:           addu    SRC,3
+                                                  315:           addiu   LEN,$0,0xFFFFFFFC
+                                                  316:           and     SRC,LEN,SRC
+                                                  317:           lw      DST,0(SRC)
+                                                  318:           bne     DST,$0,0b
+                                                  319:           nop
+                                                  320:   9:
+                                                  321:   
+                                                  322:   #else
+                                                  323:           #####################################################################
+                                                  324:           # Initialize data using the linker-generated .dinit table
+                                                  325:           # XC32 v2.10 and later provide the data-init code in a separate file
+                                                  326:           # packaged with the compiler rather than the DFP. Use that init
+                                                  327:           # code instead.
+                                                  328:           #####################################################################
+                                                  329:           .extern   __pic32_data_init
+BFC00074  3C089D00   LUI T0, -25344               330:           la      t0, __pic32_data_init
+BFC0007C  0100F809   JALR T0                      331:           jalr    t0
+BFC00080  00000000   NOP                          332:           nop
+                                                  333:   #endif /* __LIBBUILD__ */
+                                                  334:   
+                                                  335:   #endif /* INIT_DATA */
+                                                  336:   
+                                                  337:           ##################################################################
+                                                  338:           # If there are no RAM functions, skip the next section --
+                                                  339:           # initializing bus matrix registers.
+                                                  340:           ##################################################################
+BFC00084  3C090000   LUI T1, 0                    341:           la      t1,_ramfunc_begin
+BFC0008C  11200010   BEQ T1, ZERO, 0xBFC000D0     342:           beqz    t1,_ramfunc_done
+BFC00090  00000000   NOP                          343:           nop
+                                                  344:   
+                                                  345:   #if defined(INIT_SSX) || defined(__PIC32_HAS_SSX)
+                                                  346:     /* No initialization required */
+                                                  347:   #else /* Use BMX */
+                                                  348:           ##################################################################
+                                                  349:           # Initialize bus matrix registers if RAM functions exist in the
+                                                  350:           # application
+                                                  351:           ##################################################################
+BFC00094  3C090000   LUI T1, 0                    352:           la      t1,_bmxdkpba_address
+BFC0009C  3C0ABF88   LUI T2, -16504               353:           la      t2,BMXDKPBA
+BFC000A4  AD490000   SW T1, 0(T2)                 354:           sw      t1,0(t2)
+BFC000A8  3C090000   LUI T1, 0                    355:           la      t1,_bmxdudba_address
+BFC000B0  3C0ABF88   LUI T2, -16504               356:           la      t2,BMXDUDBA
+BFC000B8  AD490000   SW T1, 0(T2)                 357:           sw      t1,0(t2)
+BFC000BC  3C090000   LUI T1, 0                    358:           la      t1,_bmxdupba_address
+BFC000C4  3C0ABF88   LUI T2, -16504               359:           la      t2,BMXDUPBA
+BFC000CC  AD490000   SW T1, 0(T2)                 360:           sw      t1,0(t2)
+                                                  361:   #endif /* INIT_SSX */
+                                                  362:   
+                                                  363:   _ramfunc_done:
+                                                  364:   
+                                                  365:           ##################################################################
+                                                  366:           # Initialize CP0 registers
+                                                  367:           ##################################################################
+                                                  368:           # Initialize Count register
+                                                  369:           ##################################################################
+BFC000D0  40804800   MTC0 ZERO, Count             370:           mtc0    zero,_CP0_COUNT
+                                                  371:   
+                                                  372:           ##################################################################
+                                                  373:           # Initialize Compare register
+                                                  374:           ##################################################################
+BFC000D4  240AFFFF   ADDIU T2, ZERO, -1           375:           li      t2,-1
+BFC000D8  408A5800   MTC0 T2, Compare             376:           mtc0    t2,_CP0_COMPARE
+                                                  377:   
+                                                  378:           ##################################################################
+                                                  379:           # Ensure BEV set and Initialize EBase register
+                                                  380:           ##################################################################
+BFC000DC  3C080040   LUI T0, 64                   381:           li      t0, (1<<22)
+BFC000E0  400A6000   MFC0 T2, Status              382:           mfc0    t2,_CP0_STATUS
+BFC000E4  010A5025   OR T2, T0, T2                383:           or      t2,t0,t2               # Set BEV bit 22
+BFC000E8  408A6000   MTC0 T2, Status              384:           mtc0    t2,_CP0_STATUS
+                                                  385:   
+BFC000EC  3C099D01   LUI T1, -25343               386:           la      t1,_ebase_address
+BFC000F4  000000C0   EHB                          387:           ehb
+BFC000F8  40897801   MTC0 T1, EBase               388:           mtc0    t1,_CP0_EBASE
+                                                  389:           
+                                                  390:           ##################################################################
+                                                  391:           # Initialize PRISS register to a safer default for devices that 
+                                                  392:           # have it. The application should re-initialize it to an
+                                                  393:           # application-specific value.
+                                                  394:           #
+                                                  395:           # We do NOT do this by default.
+                                                  396:           ##################################################################
+                                                  397:   #if defined(USE_DEFAULT_PRISS_VALUE) 
+                                                  398:   #if defined(_PRISS_PRI7SS_POSITION)
+                                                  399:   #if (PIC32_SRS_SET_COUNT >= 7)
+                                                  400:           li	    t2, 0x76540000
+                                                  401:           addiu	t2, t2, 0x3210
+                                                  402:           lui	    t1, %hi(PRISS)
+                                                  403:           sw	    t2, %lo(PRISS)(t1)
+                                                  404:   #elif (PIC32_SRS_SET_COUNT <= 2)
+                                                  405:           li	    t2, 0x10000000
+                                                  406:           lui	    t1, %hi(PRISS)
+                                                  407:           sw	    t2, %lo(PRISS)(t1)
+                                                  408:   #endif /* PIC32_SRS_SET_COUNT */
+                                                  409:   #endif /* _PRISS_PRI7SS_POSITION */
+                                                  410:   #endif /* USE_DEFAULT_PRISS_VALUE */
+                                                  411:           
+                                                  412:           ##################################################################
+                                                  413:           # Initialize IntCtl/INTCON.VS register with _vector_spacing
+                                                  414:           ##################################################################
+BFC000FC  3C090000   LUI T1, 0                    415:           la      t1,_vector_spacing
+                                                  416:   #if defined(INIT_INTCONVS) || defined(__PIC32_HAS_INTCONVS)
+                                                  417:           la      t0, INTCON
+                                                  418:           lw      t2, 0(t0)
+                                                  419:           li      t2, 0
+                                                  420:           ins     t2, t1, 16, 7
+                                                  421:   #if defined(__PIC32MM) && defined(_INTCON_MVEC_MASK)
+                                                  422:           ori     t2, t2, _INTCON_MVEC_MASK
+                                                  423:   #endif
+                                                  424:           sw      t2, 0(t0)
+                                                  425:   #endif
+BFC00104  240A0000   ADDIU T2, ZERO, 0            426:           li      t2,0                    # Clear t2 and
+BFC00108  7D2A4944   INS T2, T1, 5, 5             427:           ins     t2,t1,5,5               # shift value to VS field
+BFC0010C  408A6001   MTC0 T2, IntCtl              428:           mtc0    t2,_CP0_INTCTL
+                                                  429:   
+                                                  430:           ##################################################################
+                                                  431:           # Initialize CAUSE registers
+                                                  432:           # - Enable counting of Count register <DC = 0>
+                                                  433:           # - Use special exception vector <IV = 1>
+                                                  434:           # - Clear pending software interrupts <IP1:IP0 = 0>
+                                                  435:           ##################################################################
+BFC00110  3C090080   LUI T1, 128                  436:           li      t1,0x00800000
+BFC00114  40896800   MTC0 T1, Cause               437:           mtc0    t1,_CP0_CAUSE
+                                                  438:   
+                                                  439:           ##################################################################
+                                                  440:           # Initialize STATUS register
+                                                  441:           # - Access to Coprocessor 0 not allowed in user mode <CU0 = 0>
+                                                  442:           # - User mode uses configured endianness <RE = 0>
+                                                  443:           # - Preserve Bootstrap Exception vectors <BEV>
+                                                  444:           # - Preserve soft reset <SR> and non-maskable interrupt <NMI>
+                                                  445:           # - CorExtend enabled based on whether CorExtend User Defined
+                                                  446:           #   Instructions have been implemented <CEE = Config<UDI>>
+                                                  447:           # - Disable any pending interrupts <IM7..IM2 = 0, IM1..IM0 = 0>
+                                                  448:           # - Disable hardware interrupts <IPL7:IPL2 = 0>
+                                                  449:           # - Base mode is Kernel mode <UM = 0>
+                                                  450:           # - Error level is normal <ERL = 0>
+                                                  451:           # - Exception level is normal <EXL = 0>
+                                                  452:           # - Interrupts are disabled <IE = 0>
+                                                  453:           # - DSPr2 ASE is enabled for devices that support it <MX = 1>
+                                                  454:           # - FPU64 is enabled for devices that support it <CU1=1> & <FR=1>
+                                                  455:           ##################################################################
+BFC00118  40088000   MFC0 T0, Config              456:           mfc0    t0,_CP0_CONFIG
+BFC0011C  7D090580   EXT T1, T0, 22, 1            457:           ext     t1,t0,22,1              # Extract UDI from Config register
+BFC00120  00094C40   SLL T1, T1, 17               458:           sll     t1,t1,17                # Move UDI to Status.CEE location
+BFC00124  40086000   MFC0 T0, Status              459:           mfc0    t0,_CP0_STATUS
+BFC00128  3C010058   LUI AT, 88                   460:           and     t0,t0,0x00580000        # Preserve SR, NMI, and BEV
+                                                  461:   #if defined(INIT_DSPR2) || defined(__PIC32_HAS_DSPR2)
+                                                  462:           li      t2, 0x01000000          # Set the Status.MX bit to enable DSP
+                                                  463:           or      t0,t2,t0
+                                                  464:   #endif
+                                                  465:   #if defined(INIT_FPU64) || defined(__PIC32_HAS_FPU64)
+                                                  466:           li      t2, 0x24000000          # Set the Status.CU1 and Status.FR bits to
+                                                  467:           or      t0,t2,t0                # enable the FPU in FR64 mode
+                                                  468:   #endif
+                                                  469:   
+BFC00130  01284025   OR T0, T1, T0                470:           or      t0,t1,t0                # Include Status.CEE (from UDI)
+BFC00134  40886000   MTC0 T0, Status              471:           mtc0    t0,_CP0_STATUS
+                                                  472:           
+                                                  473:   #if defined(PIC32WK) && defined(_CP0_CONFIG3) && defined (__mips_micromips)
+                                                  474:           # Ensure that the ISAONEXEC bit is set for the microMIPS ISA for the PIC32WK family
+                                                  475:           # _bsc0 (_CP0_CONFIG3, _CP0_CONFIG3_SELECT, ISAONEXEC_MASK)
+                                                  476:           li      t1,0x10000              # ISAONEXEC bit
+                                                  477:           mfc0    t0,_CP0_CONFIG3
+                                                  478:           or      t1,t0,t1
+                                                  479:           mtc0    t1,_CP0_CONFIG3
+                                                  480:   
+                                                  481:   #endif /* PIC32WK && __mips_micromips */
+                                                  482:   
+                                                  483:   #if defined(INIT_FPU64) || defined(__PIC32_HAS_FPU64)
+                                                  484:                                           # FPU Control and Status
+                                                  485:           li      t2,0x1000000            # FCSR: RM=0, FS=1, FO=0, FN=0
+                                                  486:                                           # Enables: 0b00000 E=1, V=0, Z=0, O=0, U=0, I=0
+                                                  487:           ctc1    t2, $31                 # High perf on denormal operands & tiny results
+                                                  488:   #endif
+BFC00138  000000C0   EHB                          489:           ehb
+                                                  490:   
+                                                  491:           ##################################################################
+                                                  492:           # Call the "on bootstrap" procedure
+                                                  493:           ##################################################################
+BFC0013C  3C089D00   LUI T0, -25344               494:           la      t0,_on_bootstrap
+BFC00144  0100F809   JALR T0                      495:           jalr    t0
+BFC00148  00000000   NOP                          496:           nop
+                                                  497:   
+                                                  498:           ##################################################################
+                                                  499:           # Initialize Status<BEV> for normal exception vectors
+                                                  500:           ##################################################################
+BFC0014C  40086000   MFC0 T0, Status              501:           mfc0    t0,_CP0_STATUS
+BFC00150  3C01FFBF   LUI AT, -65                  502:           and     t0,t0,0xffbfffff        # Clear BEV
+BFC0015C  40886000   MTC0 T0, Status              503:           mtc0    t0,_CP0_STATUS
+                                                  504:   
+                                                  505:           ##################################################################
+                                                  506:           # Call main. We do this via a thunk in the text section so that
+                                                  507:           # a normal jump and link can be used, enabling the startup code
+                                                  508:           # to work properly whether main is written in MIPS16 or MIPS32
+                                                  509:           # code. I.e., the linker will correctly adjust the JAL to JALX if
+                                                  510:           # necessary
+                                                  511:           ##################################################################
+BFC00160  30840000   ANDI A0, A0, 0               512:           and     a0,a0,0
+BFC00164  30A50000   ANDI A1, A1, 0               513:           and     a1,a1,0
+BFC00168  3C089D00   LUI T0, -25344               514:           la      t0,_main_entry
+BFC00170  01000008   JR T0                        515:           jr      t0
+BFC00174  00000000   NOP                          516:           nop
+                                                  517:   
+                                                  518:           .end _startup
+                                                  519:   
+                                                  520:           ##################################################################
+                                                  521:           # Boot Exception Vector Handler
+                                                  522:           # Jumps to _bootstrap_exception_handler
+                                                  523:           ##################################################################
+                                                  524:           .section .bev_handler,code,keep
+                                                  525:           .align 2
+                                                  526:           .set noreorder
+                                                  527:           .ent _bev_exception
+                                                  528:   _bev_exception:
+BFC00380  3C1A9D00   LUI K0, -25344               529:           la        k0,_bootstrap_exception_handler
+BFC00388  03400008   JR K0                        530:           jr        k0
+BFC0038C  00000000   NOP                          531:           nop
+                                                  532:   
+                                                  533:           .end _bev_exception
+                                                  534:   
+                                                  535:           ##################################################################
+                                                  536:           # General Exception Vector Handler
+                                                  537:           # Jumps to _general_exception_context
+                                                  538:           ##################################################################
+                                                  539:           .section .gen_handler,code
+                                                  540:           .align 2
+                                                  541:           .set noreorder
+                                                  542:           .ent _gen_exception
+                                                  543:   _gen_exception:
+9D00F180  3C1A9D00   LUI K0, -25344               544:   0:      la      k0,_general_exception_context
+9D00F188  03400008   JR K0                        545:           jr      k0
+9D00F18C  00000000   NOP                          546:           nop
+                                                  547:   
+                                                  548:           .end _gen_exception
+                                                  549:   
+                                                  550:   #if defined(INIT_MMU_MZ_FIXED) || defined(__PIC32_HAS_MMU_MZ_FIXED)
+                                                  551:           ##################################################################
+                                                  552:           # Simple TLB-Refill Exception Vector
+                                                  553:           # Jumps to _simple_tlb_refill_exception_context
+                                                  554:           ##################################################################
+                                                  555:           .section .simple_tlb_refill_vector,code,keep
+                                                  556:           .align 2
+                                                  557:           .set noreorder
+                                                  558:           .ent simple_tlb_refill_vector
+                                                  559:   simple_tlb_refill_vector:
+                                                  560:           la      k0,_simple_tlb_refill_exception_context
+                                                  561:           jr      k0
+                                                  562:           nop
+                                                  563:   
+                                                  564:           .end simple_tlb_refill_vector
+                                                  565:   #endif
+                                                  566:   
+                                                  567:   #if defined(INIT_L1_CACHE) || defined(__PIC32_HAS_L1CACHE)
+                                                  568:           ##################################################################
+                                                  569:           # Cache-Error Exception Vector Handler
+                                                  570:           # Jumps to _cache_err_exception_context
+                                                  571:           ##################################################################
+                                                  572:           .section .cache_err_vector,code,keep
+                                                  573:           .align 2
+                                                  574:           .set noreorder
+                                                  575:           .ent _cache_err_vector
+                                                  576:   _cache_err_vector:
+                                                  577:           la      k0,_cache_err_exception_context
+                                                  578:           jr      k0
+                                                  579:           nop
+                                                  580:   
+                                                  581:           .end _cache_err_vector
+                                                  582:   #endif
+                                                  583:   
+                                                  584:           .section .text.main_entry,code,keep
+                                                  585:           .align 2
+                                                  586:           .ent _main_entry
+                                                  587:   _main_entry:
+                                                  588:   
+                                                  589:   #if defined(CPP_INIT)
+                                                  590:           .weak _init
+                                                  591:           # call .init section to run constructors etc
+9D0012E8  3C040000   LUI A0, 0                    592:           lui	a0,%hi(_init)
+9D0012EC  27BDFFE8   ADDIU SP, SP, -24            593:           addiu	sp,sp,-24
+9D0012F0  24840000   ADDIU A0, A0, 0              594:           addiu	a0,a0,%lo(_init)
+9D0012F4  10800003   BEQ A0, ZERO, 0x9D001304     595:           beq	a0,$0,2f
+9D0012F8  AFBF0014   SW RA, 20(SP)                596:           sw	$31,20(sp)	 #,
+9D0012FC  0080F809   JALR A0                      597:           jalr	a0
+9D001300  00000000   NOP                          598:           nop
+                                                  599:   2:
+                                                  600:   #endif
+9D001304  30840000   ANDI A0, A0, 0               601:           and     a0,a0,0
+9D001308  30A50000   ANDI A1, A1, 0               602:           and     a1,a1,0
+                                                  603:   
+                                                  604:           ##################################################################
+                                                  605:   
+                                                  606:           # Call main
+                                                  607:           ##################################################################
+9D00130C  3C089D00   LUI T0, -25344               608:           la    	t0,main
+9D001314  0100F809   JALR T0                      609:           jalr 	t0
+9D001318  00000000   NOP                          610:           nop
+                                                  611:   
+                                                  612:   #if defined(CALL_EXIT)
+                                                  613:           ##################################################################
+                                                  614:           # Call exit()
+                                                  615:           ##################################################################
+                                                  616:           jal exit
+                                                  617:           nop
+                                                  618:   #endif
+                                                  619:   
+                                                  620:           ##################################################################
+                                                  621:           # Just in case, go into infinite loop
+                                                  622:           # Call a software breakpoint only with -mdebugger compiler option
+                                                  623:           ##################################################################
+                                                  624:           .weak __exception_handler_break
+                                                  625:   __crt0_exit:
+                                                  626:   1:
+9D00131C  3C029D00   LUI V0, -25344               627:           la      v0,__exception_handler_break
+9D001324  10400003   BEQ V0, ZERO, 0x9D001334     628:           beq     v0,0,0f
+9D001328  00000000   NOP                          629:           nop
+9D00132C  0040F809   JALR V0                      630:           jalr    v0
+9D001330  00000000   NOP                          631:           nop
+                                                  632:   
+9D001334  1000FFF9   BEQ ZERO, ZERO, 0x9D00131C   633:   0:      b       1b
+9D001338  00000000   NOP                          634:           nop
+                                                  635:   
+                                                  636:           .globl __crt0_exit
+                                                  637:           .end _main_entry
