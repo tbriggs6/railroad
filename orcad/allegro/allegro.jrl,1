@@ -1,0 +1,51 @@
+\t (00:00:03) allegro 17.2 S055 Windows SPB 64-bit Edition
+\t (00:00:03)     Journal start - Thu Jul 25 16:50:29 2019
+\t (00:00:03)         Host=DESKTOP-H3G2ICJ User=tbriggs Pid=17440 CPUs=8
+\t (00:00:03) CmdLine= C:\Cadence\SPB_17.2\tools\bin\allegro.exe
+\t (00:00:03) 
+   (00:00:03) Loading axlcore.cxt 
+\t (00:00:03) Opening existing design...
+\i (00:00:03) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged sensor
+\d (00:00:03) Design opened: C:/ORCAD_PROJECTS/RAILROAD/allegro/sensor.brd
+\i (00:00:04) trapsize 50
+\i (00:00:04) trapsize 51
+\i (00:00:04) trapsize 47
+\i (00:00:04) trapsize 49
+\i (00:00:05) etchedit 
+\i (00:00:20) opencd C:/ORCAD_PROJECTS/RAILROAD/allegro/RAILLROAD.brd 
+\t (00:00:20) Opening existing design...
+\i (00:00:20) trapsize 3044
+\d (00:00:20) Design opened: C:/ORCAD_PROJECTS/RAILROAD/allegro/RAILLROAD.brd
+\i (00:00:20) etchedit 
+\i (00:00:23) zoom in 1 
+\i (00:00:23) setwindow pcb
+\i (00:00:23) zoom in 5267.41 2930.07
+\i (00:00:23) trapsize 1522
+\i (00:00:23) zoom in 1 
+\i (00:00:23) setwindow pcb
+\i (00:00:23) zoom in 5255.24 2984.87
+\i (00:00:23) trapsize 761
+\i (00:00:23) zoom in 1 
+\i (00:00:23) setwindow pcb
+\i (00:00:23) zoom in 5255.24 2984.88
+\i (00:00:23) trapsize 381
+\i (00:00:23) zoom in 1 
+\i (00:00:23) setwindow pcb
+\i (00:00:23) zoom in 5255.25 2984.88
+\i (00:00:23) trapsize 190
+\i (00:00:24) roam y 96 
+\i (00:00:24) roam y 96
+\i (00:00:25) roam y 96 
+\i (00:00:25) roam y 96
+\i (00:00:25) roam y 96 
+\i (00:00:25) roam y 96
+\i (00:00:25) roam y 96 
+\i (00:00:25) roam y 96
+\i (00:00:25) roam y 96 
+\i (00:00:25) roam y 96
+\i (00:00:28) roam x 96 
+\i (00:00:28) roam x 96
+\i (00:00:30) roam y 96 
+\i (00:00:30) roam y 96
+\i (01:27:25) exit 
+\t (01:27:25)     Journal end - Thu Jul 25 18:17:51 2019

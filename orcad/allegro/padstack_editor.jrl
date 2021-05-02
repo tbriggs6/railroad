@@ -1,0 +1,17 @@
+\t (00:00:00) padstack_editor 17.2 S055 Windows SPB 64-bit Edition
+\t (00:00:00)     Journal start - Fri Jul 26 13:33:03 2019
+\t (00:00:00)         Host=DESKTOP-H3G2ICJ User=tbriggs Pid=7712 CPUs=8
+\t (00:00:00) CmdLine= padstack_editor -mpssession tbriggs -file C:/Users/tbriggs/AppData/Local/Temp/#Taaaaax08500.tmp -pname 632-1 -data C:/Users/tbriggs/AppData/Local/Temp/#Taaaaaz08500.tmp
+\t (00:00:00) 
+\d (00:00:04) QtSignal MainWindow Units CurrentIndexChanged Millimeter
+\d (00:00:08) QtFillin Yes
+\w (00:00:08) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\d (00:00:14) QtSignal GuidedTabsParent GuidedTabs currentChanged Drill
+\d (00:00:18) QtSignal MainWindow Units CurrentIndexChanged Inch
+\d (00:00:19) QtFillin Yes
+\w (00:00:19) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\d (00:01:14) QtSignal MainWindow Units CurrentIndexChanged Millimeter
+\d (00:01:16) QtFillin Yes
+\w (00:01:16) WARNING(SPMHUT-48): Scaled value has been rounded off.
+\d (00:01:26) QtFillin No
+\t (00:01:26)     Journal end - Fri Jul 26 13:34:29 2019

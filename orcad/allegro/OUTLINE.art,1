@@ -1,0 +1,30 @@
+G04 ================== begin FILE IDENTIFICATION RECORD ==================*
+G04 Layout Name:  C:/ORCAD_PROJECTS/RAILROAD/allegro/RAILLROAD.brd*
+G04 Film Name:    OUTLINE*
+G04 File Format:  Gerber RS274X*
+G04 File Origin:  Cadence Allegro 17.2-S055*
+G04 Origin Date:  Mon Jul 15 15:27:48 2019*
+G04 *
+G04 Layer:  BOARD GEOMETRY/DESIGN_OUTLINE*
+G04 Layer:  BOARD GEOMETRY/OUTLINE*
+G04 *
+G04 Offset:    (0.00 0.00)*
+G04 Mirror:    No*
+G04 Mode:      Positive*
+G04 Rotation:  0*
+G04 FullContactRelief:  No*
+G04 UndefLineWidth:     0.10*
+G04 ================== end FILE IDENTIFICATION RECORD ====================*
+%FSLAX25Y25*MOIN*%
+%IR0*IPPOS*OFA0.00000B0.00000*MIA0B0*SFA1.00000B1.00000*%
+%ADD10C,.0001*%
+G75*
+%LPD*%
+G75*
+G54D10*
+G01X250000Y170000D02*
+Y690000D01*
+X620000D01*
+Y170000D01*
+X250000D01*
+M02*

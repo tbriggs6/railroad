@@ -1,0 +1,390 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 17.2.0 d001Jul-15-2019 at 15:17:03 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='RAILLROAD';
+ POST_TIME='May 11 2019 05:12:43';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ C1 'C_SMD_CAP_1206_47UF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS125297@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins125297@analog.\c.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins125297@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C2 'C_SMD_CAP_1206_47UF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS125535@ANALOG.C.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins125535@analog.\c.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins125535@analog.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C3 'C_SMD_CAP_1206_0.1UF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120911@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120911@discrete.\c.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120911@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C4 'C_SMD_CAP_1206_10UF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120943@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120943@discrete.\c.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120943@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ C5 'C_SMD_CAP_1206_0.1UF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120927@DISCRETE.C.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120927@discrete.\c.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120927@discrete.\c.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D1 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120867@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120867@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120867@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D2 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120993@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120993@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120993@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D3 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS123672@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins123672@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins123672@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D4 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS123795@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins123795@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins123795@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ D5 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS133712@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins133712@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins133712@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ F1 'FUSE_FUSE-FX0321_FUSE':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS128794@DISCRETE.FUSE.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins128794@discrete.\fuse.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins128794@discrete.\fuse.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J1 'PHOENIX 1017529_PHOENIX-1017529':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS14690@SHIPCSE.PHOENIX 1017529.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins14690@shipcse.\phoenix 1017529.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins14690@shipcse.\phoenix 1017529.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J2 'A31411-ND RJ24 6-POS CONN_A3141':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120721@BRIGGS.A31411-ND RJ24 6-POS CONN.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120721@briggs.\a31411-nd rj24 6-pos conn.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120721@briggs.\a31411-nd rj24 6-pos conn.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J3 '282834-3_CONN_282834-3_282834-3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS129928@SHIPCSE.282834-3.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins129928@shipcse.\282834-3.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins129928@shipcse.\282834-3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MOV1 'MLV0603E31403T_MOV10D_MLV0603E3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS14398@THERMISTOR_VISHAY.MLV0603E31403T.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins14398@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins14398@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MOV2 'MLV0603E31403T_MOV10D_MLV0603E3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS14434@THERMISTOR_VISHAY.MLV0603E31403T.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins14434@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins14434@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MOV3 'MLV0603E31403T_MOV10D_MLV0603E3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS14470@THERMISTOR_VISHAY.MLV0603E31403T.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins14470@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins14470@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ MOV4 'MLV0603E31403T_MOV10D_MLV0603E3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS14506@THERMISTOR_VISHAY.MLV0603E31403T.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins14506@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins14506@thermistor_vishay.\mlv0603e31403t.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R1 'R_SMD_RES_0805_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS126004@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins126004@analog.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins126004@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R10 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS123688@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins123688@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins123688@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R11 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS123811@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins123811@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins123811@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R12 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS133728@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins133728@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins133728@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R13 'R_SMD_RES_1206_10K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS132817@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins132817@analog.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins132817@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R14 'R_SMD_RES_1206_10K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS132866@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins132866@analog.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins132866@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R2 'R_SMD_RES_1206_10K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS128129@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins128129@analog.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins128129@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R3 'R_SMD_RES_1206_10K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS126155@ANALOG.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins126155@analog.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins126155@analog.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R4 'R_SMD_RES_1206_10K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS121207@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins121207@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins121207@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R5 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS120883@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins120883@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins120883@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R6 '3362P-1-103LF_POT_3362P_3362P-1':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS135253@SHIPCSE.3362P-1-103LF.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins135253@shipcse.\3362p-1-103lf.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins135253@shipcse.\3362p-1-103lf.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R7 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS121009@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins121009@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins121009@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R8 'R_SMD_RES_1206_1K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS130105@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins130105@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins130105@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R9 '3362P-1-103LF_POT_3362P_3362P-1':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS135271@SHIPCSE.3362P-1-103LF.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins135271@shipcse.\3362p-1-103lf.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins135271@shipcse.\3362p-1-103lf.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U1 'AZ1117_AZ1117_AZ1117':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS125189@SHIPCSE.AZ1117.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins125189@shipcse.\az1117.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins125189@shipcse.\az1117.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U2 'IRF9530SPBF_0_D2PAK_IRF9530SPBF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS127592@RAILLROAD.IRF9530SPBF_0.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins127592@raillroad.\irf9530spbf_0.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins127592@raillroad.\irf9530spbf_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U3 'IRF9530SPBF_0_D2PAK_IRF9530SPBF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS127574@RAILLROAD.IRF9530SPBF_0.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins127574@raillroad.\irf9530spbf_0.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins127574@raillroad.\irf9530spbf_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U4 'TC4469COE_SOIC16-W_MC_TC4469COE':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS125750@SHIPCSE.TC4469COE.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins125750@shipcse.\tc4469coe.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins125750@shipcse.\tc4469coe.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U5 'IRF9530SPBF_0_D2PAK_IRF9530SPBF':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS127610@RAILLROAD.IRF9530SPBF_0.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins127610@raillroad.\irf9530spbf_0.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins127610@raillroad.\irf9530spbf_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ U6 'PIC32MX130F064B-ISS_0_SSOP28_MC':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.CONTROLLER(SCH_1):INS122162@RAILLROAD.PIC32MX130F064B-ISS_0.NORMAL(CHIPS)':
+ C_PATH='@raillroad.controller(sch_1):ins122162@raillroad.\pic32mx130f064b-iss_0.normal\(chips)',
+ P_PATH='@raillroad.controller(sch_1):page1_ins122162@raillroad.\pic32mx130f064b-iss_0.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.

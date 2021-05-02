@@ -1,0 +1,16 @@
+;LEADER: 12 
+;HEADER: 
+;CODE  : ASCII 
+;FILE  : sensor-1-2.drl for  ... layers TOP and BOTTOM
+;DESIGN: sensor.brd
+;T01 Holesize 1. = 35.430000 Tolerance = +0.000000/-0.000000 PLATED MILS Quantity = 2
+;T02 Holesize 2. = 39.370000 Tolerance = +0.000000/-0.000000 PLATED MILS Quantity = 3
+%
+G90
+T01
+X0039291Y0039843
+X0029291Y0039843
+T02
+X0025000Y0060000
+R02X0010000
+M30

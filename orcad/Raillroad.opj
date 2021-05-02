@@ -1,0 +1,213 @@
+(ExpressProject "Raillroad"
+  (ProjectVersion "19981106")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\analog.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\analog.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\breakout.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\breakout.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\source.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\source.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\sourcstm.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\sourcstm.olb")
+        (Type "Schematic Library"))
+      (File "C:\Cadence\SPB_17.2\tools\capture\library\pspice\special.olb"
+        (DisplayName
+           "C:\Cadence\SPB_17.2\tools\capture\library\pspice\special.olb")
+        (Type "Schematic Library"))
+      (File "c:\orcad\libraries\shipcse.olb"
+        (Type "Schematic Library"))
+      (File "c:\orcad\libraries\2019-06-22_15-33-37.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\users\tbriggs\downloads\ul_irf9530spbf\orcadcapturexml\orcadcapturexml\2019-06-22_16-35-35.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\users\tbriggs\downloads\ul_2828343\orcadcapturexml\orcadcapturexml\2019-06-22_17-22-51.olb"
+        (Type "Schematic Library"))
+      (File "c:\orcad\libraries\briggs.olb"
+        (Type "Schematic Library"))
+      (File
+         "c:\users\tbriggs\downloads\ul_cb10mv103ke\orcadcapturexml\orcadcapturexml\2019-06-22_17-42-24.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File "raillroad.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (ANNOTATE_Scope "0")
+    (ANNOTATE_Mode "1")
+    (ANNOTATE_Action "1")
+    (ANNOTATE_Reset_References_to_1 "FALSE")
+    (ANNOTATE_No_Page_Number_Change "TRUE")
+    (ANNOTATE_Property_Combine "{Value}{Source Package}")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE")
+    (RootChangedForceReNetlist "x")
+    (Netlist_TAB "0")
+    ("Create Allegro Netlist" "TRUE")
+    ("Allegro Netlist Directory" "allegro")
+    ("View Allegro Netlist Files" "FALSE")
+    ("Allegro Netlist Create DCF File" "FALSE")
+    ("Update Allegro Board" "TRUE")
+    ("Allegro Netlist Output Board File" "allegro\sensor.brd")
+    ("Allegro Netlist Remove Etch" "FALSE")
+    ("Allegro Netlist Place Changed Component" "ALWAYS_REPLACE")
+    ("Allegro Netlist Open Board in Allegro" "ALLEGRO")
+    ("Allegro Setup Backup Versions" "3")
+    ("Allegro Setup Ignore Constraints" "FALSE")
+    ("Allegro Setup Part Type Length" "31")
+    ("Allegro Netlist Combine Property String" "PCB Footprint")
+    ("Allegro Netlist Ignore Fixed Property" "FALSE")
+    ("Allegro Netlist User Defined Property" "FALSE")
+    (BOM_Scope "1")
+    (BOM_Mode "0")
+    (BOM_Report_File "C:\ORCAD_PROJECTS\RAILROAD\RAILLROAD.BOM")
+    (BOM_Merge_Include "FALSE")
+    (BOM_Property_Combine_7.0
+       "{Item}\t{Quantity}\t{Reference}\t{Value}\t{Distributor PN}\t{PCB Footprint}")
+    (BOM_Header "Item\tQuantity\tReference\tPart\Mfg Part\t{Footprint}")
+    (BOM_Include_File "C:\ORCAD_PROJECTS\RAILROAD\RAILLROAD.INC")
+    (BOM_Include_File_Combine_7.0 "{Item}\t{Quantity}\t{Reference}\t{Value}")
+    (BOM_One_Part_Per_Line "FALSE")
+    (Open_BOM_in_Excel "TRUE")
+    (BOM_View_Output "FALSE")
+    (Annotate_Page_Order "0")
+    (ANNOTATE_IncludeNonPrimitive "TRUE")
+    (ANNOTATE_PreserveDesignator "FALSE")
+    (ANNOTATE_PreserveUserEdits "FALSE")
+    (ANNOTATE_Refdes_Control_Required "FALSE")
+    (Update_Instace_for_External_Design "FALSE")
+    (Annotate_type "Default")
+    (width_pages "100")
+    (width_start "80")
+    (width_End "80")
+    ("Allegro Netlist Input Board File" "allegro\sensor.brd"))
+  (Folder "Outputs"
+    (File ".\raillroad-pspicefiles\schematic1\schematic1.net"
+      (Type "Report"))
+    (File ".\raillroad.bom"
+      (Type "Report"))
+    (File ".\allegro\pstxnet.dat"
+      (Type "Report")
+      (DisplayName "pstxnet.dat"))
+    (File ".\allegro\pstxprt.dat"
+      (Type "Report")
+      (DisplayName "pstxprt.dat"))
+    (File ".\allegro\pstchip.dat"
+      (Type "Report")
+      (DisplayName "pstchip.dat")))
+  (Folder "PSpice Resources"
+    (Folder "Model Libraries"
+      (Sort User))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User))
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\raillroad-pspicefiles\varistor simulation\bias.sim"
+        (DisplayName "VARISTOR simulation-bias")
+        (Type "PSpice Profile"))))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (CON3
+      (FullPartName "CON3.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CONNECTOR.OLB")
+      (DeviceIndex "0"))
+    (3362P-1-103LF
+      (FullPartName "3362P-1-103LF.Normal")
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (CB10MV103KE
+      (FullPartName "CB10MV103KE.Normal")
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (282834-3
+      (FullPartName "282834-3.Normal")
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (TitleBlock_SHIPCSE_Small
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (FUSE
+      (FullPartName "FUSE.Normal")
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\DISCRETE.OLB")
+      (DeviceIndex "0"))
+    (IRF9530SPBF
+      (FullPartName "IRF9530SPBF.Normal")
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (PIC32MX130F064B-ISS
+      (FullPartName "PIC32MX130F064B-ISS.Normal")
+      (LibraryName "C:\ORCAD\LIBRARIES\SHIPCSE.OLB")
+      (DeviceIndex "0"))
+    (0
+      (LibraryName "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\CAPSYM.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (VPULSE
+      (FullPartName "VPULSE.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (VDC
+      (FullPartName "VDC.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (MLV0603E31403T
+      (FullPartName "MLV0603E31403T.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.2\TOOLS\CAPTURE\LIBRARY\PSPICE\THERMISTOR_VISHAY.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName "..\..\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (L
+      (FullPartName "L.Normal")
+      (LibraryName "..\..\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (VSTIM
+      (FullPartName "VSTIM.Normal")
+      (LibraryName "..\..\LIBRARY\PSPICE\SOURCSTM.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory "C:\Cadence\SPB_17.2\tools\capture\library")
+  (MPSSessionName "tbriggs")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Design Resources" "Library")
+      (Path "Design Resources" "Library" "c:\orcad\libraries\shipcse.olb")
+      (Path "Outputs")
+      (Select "Design Resources" "Library" "c:\orcad\libraries\shipcse.olb"
+         "PCB Antenna"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -9 -38 0 316 0 404"))
+      (Tab 0))
+    (Doc
+      (Type "COrSchematicDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -9 -38 32 1651 32 483")
+        (Scroll "-300 0")
+        (Zoom "100")
+        (Occurrence "/"))
+      (Path "C:\ORCAD_PROJECTS\RAILROAD\RAILLROAD.DSN")
+      (Schematic "CONTROLLER")
+      (Page "PAGE2")))
+  (ISPCBBASICLICENSE "false"))

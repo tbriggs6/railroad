@@ -1,0 +1,43 @@
+(---------------------------------------------------------------------)
+(                                                                     )
+(    DesignTrue DFM Wizard                                            )
+(                                                                     )
+(    Drawing          : RAILLROAD.brd                                 )
+(    Software Version : 17.2S055                                      )
+(    Date/Time        : Sun Jun 23 09:44:51 2019                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+Loading rules for Allegro_studio
+
+
+Stackup: PRIMARY, Design Technology: Rigid
+                   TOP 1.200000 mils -> 1 oz 
+               LAYER_1 1.200000 mils -> 1 oz 
+               LAYER_2 1.200000 mils -> 1 oz 
+                BOTTOM 1.200000 mils -> 1 oz 
+
+Design For Fabrication Checks
+Rule file used: C:\Cadence\SPB_17.2/share/pcb/dfm/dt_wizard/dt_wizard_pcbdff_template.csv
+Number of Outline Rules generated: 36
+Number of Mask Rules generated: 1
+Number of Annular Ring Rules generated: 12
+Number of Copper Feature Rules generated: 10
+Number of Copper Spacing Rules generated: 42
+Number of Silkscreen Rules generated: 4
+
+Design For Assembly Checks
+Rule file used: C:\Cadence\SPB_17.2/share/pcb/dfm/dt_wizard/dt_wizard_pcbdfa_template.csv
+Number of Outline Rules generated: 4
+Number of Spacing Rules generated: 4
+Number of Pastemask Rules generated: 6
+
+Design For Test Checks
+Rule file used: C:\Cadence\SPB_17.2/share/pcb/dfm/dt_wizard/dt_wizard_pcbdft_template.csv
+Number of Outline Rules generated: 2
+Number of Mask and Silkscreen Rules generated: 2
+Number of Spacing Rules generated: 6
+Number of Probe Rules generated: 1
+
+Wizard completed successfully

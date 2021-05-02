@@ -1,0 +1,7 @@
+* source RAILLROAD
+X_U1         0 N14428 MLV0603E31403T PARAMS: TOL=0
+R_R1         N14428 0  1k TC=0,0 
+V_V1         N14428 0 12Vdc
+V_V2         N14601 0  
++PULSE 0 1000 1m 20u 20u 1u 20m
+R_R2         N14601 N14428  1 TC=0,0 

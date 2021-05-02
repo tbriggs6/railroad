@@ -1,0 +1,236 @@
+\t (00:00:02) allegro 17.2 S055 Windows SPB 64-bit Edition
+\t (00:00:02)     Journal start - Fri Jul 26 13:28:35 2019
+\t (00:00:02)         Host=DESKTOP-H3G2ICJ User=tbriggs Pid=8500 CPUs=8
+\t (00:00:02) CmdLine= C:\Cadence\SPB_17.2\tools\bin\allegro.exe
+\t (00:00:02) 
+   (00:00:03) Loading axlcore.cxt 
+\t (00:00:03) Opening existing design...
+\i (00:00:03) QtSignal SPBFoldDockArea FoldAreaTabWidget currentChanged sensor
+\d (00:00:03) Design opened: C:/ORCAD_PROJECTS/RAILROAD/allegro/sensor.brd
+\i (00:00:04) trapsize 50
+\i (00:00:04) trapsize 51
+\i (00:00:04) trapsize 47
+\i (00:00:04) trapsize 49
+\i (00:00:04) etchedit 
+\i (00:00:21) opencd C:/ORCAD_PROJECTS/RAILROAD/allegro/RAILLROAD.brd 
+\t (00:00:21) Opening existing design...
+\i (00:00:21) trapsize 3044
+\d (00:00:21) Design opened: C:/ORCAD_PROJECTS/RAILROAD/allegro/RAILLROAD.brd
+\i (00:00:21) etchedit 
+\i (00:00:25) color192 
+\i (00:00:26) etchedit 
+\i (00:00:28) QtSignal CVDLayerContainer CVDVisibilityOff clicked
+\i (00:00:29) QtSignal CVDLayerSplitter CVDLayersTree itemSelectionChanged Manufacturing
+\i (00:00:32) QtSignal CVDLayerSplitter CVDLayersTree itemSelectionChanged Geometry
+\i (00:00:34) QtSignal CVDLayerSplitter CVDLayerTable allBoxClicked
+\i (00:00:41) QtSignal CVDLayerSplitter CVDLayersTree itemSelectionChanged Components
+\i (00:00:49) QtSignal CVDLayerSplitter CVDLayersTree itemSelectionChanged Stack-Up Conductor
+\i (00:00:53) QtSignal CVDLayerTable CVDLayerTableHorzHeader clickedCheckBox 0
+\i (00:00:53) QtSignal CVDLayerSplitter CVDLayerTable dataChanged 0 0
+\i (00:00:56) QtSignal ColorVisibilityDialog CVDApplyButton clicked
+\i (00:00:58) zoom out 1 
+\i (00:00:58) setwindow pcb
+\i (00:00:58) zoom out 6929.66 5730.93
+\i (00:00:58) trapsize 6089
+\i (00:01:01) dimension edit 
+\i (00:01:02) pick grid 3945.56 7606.29
+\t (00:01:02) last pick:  3950.00 7600.00
+\i (00:01:03) prepopup 3945.56 7606.29
+\i (00:01:05) cancel 
+\i (00:01:05) setwindow text
+\i (00:01:05) close
+\i (00:01:05) etchedit 
+\i (00:01:10) delete 
+\i (00:01:13) pick grid 3957.74 7630.64
+\t (00:01:13) last pick:  3950.00 7625.00
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\i (00:01:13) pick grid 3921.20 7618.46
+\t (00:01:13) last pick:  3925.00 7625.00
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\w (00:01:13) WARNING(SPMHGE-623): Non associative dimensions in selection set ignored.  Use the
+Dimension Environment to edit dimensions.
+\i (00:01:16) prepopup 6234.96 2199.41
+\i (00:01:17) cancel 
+\i (00:01:18) etchedit 
+\i (00:01:20) rats all 
+\i (00:01:20) etchedit 
+\i (00:01:22) dimension edit 
+\i (00:01:24) pick grid 3982.09 7642.82
+\t (00:01:24) last pick:  3975.00 7650.00
+\i (00:01:26) setwindow text
+\i (00:01:26) close
+\i (00:01:29) drag_start grid 3921.20 7776.77
+\w (00:01:29) WARNING(SPMHDI-55): No dimension found.
+\i (00:01:29) drag_stop 6831.66 7521.04
+\i (00:01:31) setwindow text
+\i (00:01:31) close
+\i (00:01:35) dimension edit 
+\i (00:01:36) pick grid 3945.56 8069.04
+\t (00:01:36) last pick:  3950.00 8075.00
+\i (00:01:37) setwindow text
+\i (00:01:37) close
+\i (00:01:39) prepopup 3982.09 7813.31
+\i (00:01:46) pop dyn_option_select '@:@Move text' 
+\i (00:01:48) pick grid 6697.71 6510.30
+\t (00:01:48) last pick:  6700.00 6500.00
+\i (00:01:49) pick grid 3860.31 8154.28
+\t (00:01:49) last pick:  3850.00 8150.00
+\i (00:01:53) pick grid 7404.01 4099.12
+\t (00:01:53) last pick:  7400.00 4100.00
+\i (00:01:56) dimension edit 
+\i (00:01:59) prepopup 4469.20 7655.00
+\i (00:02:03) pop dyn_option_select '@:@Linear dimension' 
+\t (00:02:03) Pick an element or point to dimension ...
+\i (00:02:04) pick grid 2934.81 6571.19
+\t (00:02:04) last pick:  2925.00 6575.00
+\t (00:02:04) First point found ... pick the second point.
+\i (00:02:06) pick grid 5820.92 6485.94
+\t (00:02:06) last pick:  5825.00 6475.00
+\t (00:02:06) Pick location for the dimension value.
+\i (00:02:09) pick grid 4286.53 7216.60
+\t (00:02:09) last pick:  4275.00 7225.00
+\t (00:02:09) Pick an element or point to dimension ...
+\i (00:02:11) pick grid 2910.46 1992.39
+\t (00:02:11) last pick:  2900.00 2000.00
+\t (00:02:11) Pick an element or point to dimension ...
+\t (00:02:11) First point found ... pick the second point.
+\i (00:02:12) pick grid 2813.04 6546.83
+\t (00:02:12) last pick:  2825.00 6550.00
+\t (00:02:12) Pick location for the dimension value.
+\i (00:02:14) pick grid 1936.25 4293.97
+\t (00:02:14) last pick:  1925.00 4300.00
+\t (00:02:14) Pick an element or point to dimension ...
+\i (00:02:20) prepopup 3641.12 7849.84
+\i (00:02:24) pop dyn_option_select '@:@Diametral leader' 
+\t (00:02:24) Pick an element or point to dimension ...
+\i (00:02:26) pick grid 2849.57 6522.48
+\t (00:02:26) last pick:  2850.00 6525.00
+\i (00:02:29) pick grid 5881.80 6473.77
+\t (00:02:29) last pick:  5875.00 6475.00
+\i (00:02:32) dimension edit 
+\t (00:02:32) Pick an element or point to dimension ...
+\i (00:02:33) prepopup 5881.80 6546.83
+\i (00:02:36) pop dyn_option_select '@:@Radial leader' 
+\t (00:02:36) Pick an element or point to dimension ...
+\i (00:02:37) pick grid 2886.10 6546.83
+\t (00:02:37) last pick:  2875.00 6550.00
+\i (00:02:39) pick grid 5954.87 6546.83
+\t (00:02:39) last pick:  5950.00 6550.00
+\i (00:02:43) color192 
+\i (00:02:48) prmed 
+\i (00:02:50) setwindow form.prmedit
+\i (00:02:50) FORM prmedit display_non_plated_holes YES 
+\i (00:02:51) FORM prmedit apply  
+\i (00:02:55) FORM prmedit display_plated_holes YES 
+\i (00:02:57) FORM prmedit apply  
+\i (00:02:58) FORM prmedit done  
+\i (00:02:58) setwindow pcb
+\i (00:02:58) etchedit 
+\i (00:02:59) zoom in 1 
+\i (00:02:59) setwindow pcb
+\i (00:02:59) zoom in 2983.52 6485.94
+\i (00:02:59) trapsize 3044
+\i (00:02:59) zoom in 1 
+\i (00:02:59) setwindow pcb
+\i (00:02:59) zoom in 2965.26 6485.95
+\i (00:02:59) trapsize 1522
+\i (00:02:59) zoom in 1 
+\i (00:02:59) setwindow pcb
+\i (00:02:59) zoom in 2965.26 6485.95
+\i (00:02:59) trapsize 761
+\i (00:03:02) pick grid 2867.84 6496.60
+\t (00:03:02) last pick:  2875.00 6500.00
+\i (00:03:02) prepopup 2867.84 6496.60
+\i (00:03:04) dimension edit 
+\t (00:03:04) Pick an element or point to dimension ...
+\i (00:03:06) prepopup 2884.59 6487.47
+\i (00:03:17) pop dyn_option_select '@:@Datum dimension' 
+\t (00:03:17) Pick an element or point for a (0,0) datum location ...
+\i (00:03:18) pick grid 2876.98 6528.57
+\t (00:03:18) last pick:  2875.00 6525.00
+\i (00:03:18) zoom out 1 
+\i (00:03:18) setwindow pcb
+\i (00:03:18) zoom out 2876.98 6528.57
+\i (00:03:18) trapsize 1522
+\i (00:03:19) zoom out 1 
+\i (00:03:19) setwindow pcb
+\i (00:03:19) zoom out 2876.97 6528.57
+\i (00:03:19) trapsize 3044
+\i (00:03:20) pick grid 2182.85 6814.75
+\t (00:03:20) last pick:  2175.00 6825.00
+\t (00:03:20) Pick extension line vertices ...
+\i (00:03:23) pick grid 2438.58 7107.01
+\t (00:03:23) last pick:  2450.00 7100.00
+\i (00:03:24) prepopup 2408.13 7100.92
+\i (00:03:25) done 
+\t (00:03:25) Pick first extension line vertex ...
+\i (00:03:25) etchedit 
+\i (00:03:30) undo 
+\i (00:03:30) trapsize 761
+\i (00:03:30) etchedit 
+\i (00:03:31) zoom out 1 
+\i (00:03:31) setwindow pcb
+\i (00:03:31) zoom out 2747.59 6641.21
+\i (00:03:31) trapsize 1522
+\i (00:03:31) zoom out 1 
+\i (00:03:31) setwindow pcb
+\i (00:03:31) zoom out 2787.16 6601.64
+\i (00:03:31) trapsize 3044
+\i (00:03:31) zoom out 1 
+\i (00:03:31) setwindow pcb
+\i (00:03:31) zoom out 2811.52 6540.75
+\i (00:03:31) trapsize 6089
+\i (00:03:44) pdf out 
+\t (00:03:44) No license found, please contact your Cadence sales support.
+\i (00:03:45) fillin confirm
+\i (00:03:45) etchedit 
+\i (00:03:55) plot 
+\i (00:03:58) plotwint initialize "Adobe PDF"
+\i (00:03:58) plotwint orientation 1
+\i (00:03:58) plotwint papername "Letter"
+\i (00:03:58) plotwint scale 100
+\i (00:03:58) plotwint copies 1
+\i (00:03:58) plotwint defaultsource 15
+\i (00:03:58) plotwint printquality 1200
+\i (00:03:58) plotwint color 2
+\i (00:03:58) plotwint execute
+\i (00:04:21) pick grid 3164.68 7952.00
+\t (00:04:21) last pick:  3175.00 7950.00
+\i (00:04:22) zoom in 1 
+\i (00:04:22) setwindow pcb
+\i (00:04:22) zoom in 6367.40 6429.80
+\i (00:04:22) trapsize 3044
+\i (00:04:22) zoom in 1 
+\i (00:04:22) setwindow pcb
+\i (00:04:22) zoom in 6336.96 6435.89
+\i (00:04:22) trapsize 1522
+\i (00:04:22) zoom in 1 
+\i (00:04:22) setwindow pcb
+\i (00:04:22) zoom in 6273.03 6445.03
+\i (00:04:22) trapsize 761
+\i (00:04:22) zoom out 1 
+\i (00:04:22) setwindow pcb
+\i (00:04:22) zoom out 6027.96 6443.51
+\i (00:04:22) trapsize 1522
+\i (00:04:25) prepopup 8003.78 6577.47
+\i (00:04:26) pick grid 7921.58 6607.91
+\t (00:04:26) last pick:  7925.00 6600.00
+\i (00:04:26) setwindow form.find
+\i (00:04:26) FORM find pins YES 
+\i (00:04:27) setwindow pcb
+\i (00:04:27) prepopup 5808.76 6492.22
+\i (00:04:29) pop dyn_option_select 'Modify design padstack@:@Single instance' 
+\i (00:04:29) mod padstack 
+\i (00:05:57) etchedit 
+\i (00:54:32) exit 
+\e (00:54:32) Do you want to save the changes you made to RAILLROAD.brd?
+\i (00:54:34) fillin no 
+\t (00:54:34)     Journal end - Fri Jul 26 14:23:07 2019

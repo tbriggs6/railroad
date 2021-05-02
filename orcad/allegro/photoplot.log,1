@@ -1,0 +1,452 @@
+(---------------------------------------------------------------------)
+(                                                                     )
+(    ARTWORK LOG                                                      )
+(                                                                     )
+(    Drawing          : RAILLROAD.brd                                 )
+(    Software Version : 17.2S055                                      )
+(    Date/Time        : Sun Jun 23 11:03:22 2019                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+
+ ******************************************
+ WARNING: DRC OUT OF DATE on this layout.
+ ******************************************
+
+ ---- Photoplot outline rectangle not found; using drawing extents.
+
+
+
+
+ Can't open parameter file ... using default values:
+     DEVICE-TYPE        GERBER6X00
+     G-CODES            NO
+     STATIONS-PER-WHEEL 24
+     FILM-SIZE          24000 16000
+     COORDINATES        ABSOLUTE
+     OUTPUT-UNITS       INCHES
+     FORMAT             5.3
+     ABORT-ON-ERROR     abort film & continue
+     SUPPRESS-LEAD-ZEROES     YES
+     SUPPRESS-TRAIL-ZEROES    NO
+     OPTIMIZE           YES
+     SUPPRESS-EQUAL     YES
+     SCALE              1.0
+
+
+
+
+
+================================================================
+     PROCESSING FILM < LAYER_1 >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/LAYER_1.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.00800                                  DARK 
+  CIRCLE     0.02400                                  DARK 
+  CIRCLE     0.05906                                  DARK 
+  CIRCLE     0.06299                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.08000                                  DARK 
+  CIRCLE     0.15748                                  DARK 
+  CIRCLE     0.27165                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  OBLONG     0.39370     x 0.15748      90.000 NO     DARK 
+
+     LAYER_1 created with warnings
+
+
+================================================================
+     PROCESSING FILM < LAYER_2 >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/LAYER_2.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.00800                                  DARK 
+  CIRCLE     0.01500                                  DARK 
+  CIRCLE     0.02400                                  DARK 
+  CIRCLE     0.02500                                  DARK 
+  CIRCLE     0.05906                                  DARK 
+  CIRCLE     0.06299                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.15748                                  DARK 
+  CIRCLE     0.27165                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  OBLONG     0.39370     x 0.15748      90.000 NO     DARK 
+
+     LAYER_2 created with warnings
+
+
+================================================================
+     PROCESSING FILM < PROMASK_BOTTOM >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/PROMASK_BOTTOM.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.20 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.04400                                  DARK 
+  CIRCLE     0.06102                                  DARK 
+  CIRCLE     0.06693                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.08000                                  DARK 
+  CIRCLE     0.16142                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  OBLONG     0.40157     x 0.16535      90.000 NO     DARK 
+
+     PROMASK_BOTTOM created with warnings
+
+
+================================================================
+     PROCESSING FILM < TOP >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/TOP.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.20 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  YES
+  Draw holes only                     NO
+
+    WARNING: Film contains objects with associated DRCs (25).
+           In the design editor view this film and enable visibility for the
+           associated DRC layer. Verify the DRCs are approved exceptions to your rules.
+    WARNING: Null REGULAR-PAD specified for padstack A31411-ND-MECH at (5200.00 1900.00).
+    WARNING: Null REGULAR-PAD specified for padstack A31411-ND-MECH at (5600.00 1900.00).
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.01500                                  DARK 
+  CIRCLE     0.02000                                  DARK 
+  CIRCLE     0.02400                                  DARK 
+  CIRCLE     0.03000                                  DARK 
+  CIRCLE     0.05906                                  DARK 
+  CIRCLE     0.06299                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.15748                                  DARK 
+  CIRCLE     0.27165                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  RECTANGLE  0.02756     x 0.05118       0.000 NO     DARK 
+  RECTANGLE  0.04100     x 0.13800       0.000 NO     DARK 
+  RECTANGLE  0.04724     x 0.07087       0.000 NO     DARK 
+  RECTANGLE  0.04724     x 0.07087      90.000 NO     DARK 
+  RECTANGLE  0.04724     x 0.08661       0.000 NO     DARK 
+  RECTANGLE  0.06600     x 0.01700       0.000 NO     DARK 
+  RECTANGLE  0.07800     x 0.02200      90.000 NO     DARK 
+  RECTANGLE  0.13780     x 0.08661       0.000 NO     DARK 
+  RECTANGLE  0.42200     x 0.47400       0.000 NO     DARK 
+  OBLONG     0.39370     x 0.15748      90.000 NO     DARK 
+
+     TOP created with warnings
+
+
+================================================================
+     PROCESSING FILM < BOTTOM >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/BOTTOM.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.20 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+    WARNING: Film contains objects with associated DRCs (4).
+           In the design editor view this film and enable visibility for the
+           associated DRC layer. Verify the DRCs are approved exceptions to your rules.
+    WARNING: Null REGULAR-PAD specified for padstack A31411-ND-MECH at (5200.00 1900.00).
+    WARNING: Null REGULAR-PAD specified for padstack A31411-ND-MECH at (5600.00 1900.00).
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.01500                                  DARK 
+  CIRCLE     0.02000                                  DARK 
+  CIRCLE     0.02400                                  DARK 
+  CIRCLE     0.05906                                  DARK 
+  CIRCLE     0.06299                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.08000                                  DARK 
+  CIRCLE     0.15748                                  DARK 
+  CIRCLE     0.27165                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  OBLONG     0.39370     x 0.15748      90.000 NO     DARK 
+
+     BOTTOM created with warnings
+
+
+================================================================
+     PROCESSING FILM < SILK >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/SILK.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.30 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+    WARNING: text composed 0 width line found at (2635.00 3265.00) in MIL
+           ... using undefined line width of 0.30 MIL
+
+    WARNING: text having Multiple 0 width lines; all will be treated the same as the first.
+           ... using undefined line width of 0.30 MIL
+
+    WARNING: 0 width line found at (3301.00 6560.90) in MIL
+           ... using undefined line width of 0.30 MIL
+
+    WARNING: Multiple 0 width lines; all will be treated the same as the first.
+           ... using undefined line width of 0.30 MIL
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.00030                                  DARK 
+  CIRCLE     0.00600                                  DARK 
+  CIRCLE     0.02000                                  DARK 
+
+     SILK created with warnings
+
+
+================================================================
+     PROCESSING FILM < PROMASK >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/PROMASK.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.20 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.04400                                  DARK 
+  CIRCLE     0.06102                                  DARK 
+  CIRCLE     0.06693                                  DARK 
+  CIRCLE     0.06800                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  CIRCLE     0.08000                                  DARK 
+  CIRCLE     0.16142                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  RECTANGLE  0.03543     x 0.05906       0.000 NO     DARK 
+  RECTANGLE  0.04100     x 0.13800       0.000 NO     DARK 
+  RECTANGLE  0.05118     x 0.09055       0.000 NO     DARK 
+  RECTANGLE  0.05512     x 0.07874       0.000 NO     DARK 
+  RECTANGLE  0.05512     x 0.07874      90.000 NO     DARK 
+  RECTANGLE  0.06600     x 0.01700       0.000 NO     DARK 
+  RECTANGLE  0.07800     x 0.02200      90.000 NO     DARK 
+  RECTANGLE  0.13780     x 0.04724       0.000 NO     DARK 
+  RECTANGLE  0.42200     x 0.47400       0.000 NO     DARK 
+  OBLONG     0.40157     x 0.16535      90.000 NO     DARK 
+
+     PROMASK created with warnings
+
+
+================================================================
+     PROCESSING FILM < PASTE >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/PASTE.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.10 MIL
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED (UNIT = IN):
+  ---------------------------------------------------------
+  TYPE       SIZE/NAME                   ROT   MIRROR MODE 
+  ---------------------------------------------------------
+  CIRCLE     0.05906                                  DARK 
+  CIRCLE     0.07500                                  DARK 
+  SQUARE     0.07500                     0.000 NO     DARK 
+  RECTANGLE  0.02362     x 0.04724       0.000 NO     DARK 
+  RECTANGLE  0.03543     x 0.06299       0.000 NO     DARK 
+  RECTANGLE  0.03543     x 0.06299      90.000 NO     DARK 
+  RECTANGLE  0.04100     x 0.13800       0.000 NO     DARK 
+  RECTANGLE  0.04331     x 0.07874       0.000 NO     DARK 
+  RECTANGLE  0.06600     x 0.01700       0.000 NO     DARK 
+  RECTANGLE  0.07800     x 0.02200      90.000 NO     DARK 
+  RECTANGLE  0.13780     x 0.04724       0.000 NO     DARK 
+  RECTANGLE  0.42200     x 0.47400       0.000 NO     DARK 
+
+     PASTE created with warnings
+
+
+================================================================
+     PROCESSING FILM < OUTLINE >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/OUTLINE.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+    WARNING: rectangle or unfilled shape composed 0 width line found at (2500.00 1700.00) in MIL
+           ... ignored.
+
+
+
+  APERTURES USED:  NONE
+     OUTLINE created with warnings
+
+
+================================================================
+     PROCESSING FILM < GND >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/GND.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED:  NONE
+     GND created with warnings
+
+
+================================================================
+     PROCESSING FILM < POWER >
+     TO FILE < C:/ORCAD_PROJECTS/RAILROAD/allegro/POWER.art > ...
+================================================================
+
+  FILM PARAMETERS :
+  ---------------------------------------------------------
+  Undefined line width                0.00
+  Mirror code                         NONE
+  Rotate angle                        NONE
+  Offset x:                           0.00
+  Offset y:                           0.00
+  Plot negative                       NO
+  Suppress unconnected internal pads  NO
+  Draw holes only                     NO
+
+
+
+  APERTURES USED:  NONE
+     POWER created with warnings
+
+
+------------------------------------------------------
+ SUMMARY:
+        LAYER_1 created with warnings
+        LAYER_2 created with warnings
+        PROMASK_BOTTOM created with warnings
+        TOP created with warnings
+        BOTTOM created with warnings
+        SILK created with warnings
+        PROMASK created with warnings
+        PASTE created with warnings
+        OUTLINE created with warnings
+        GND created with warnings
+        POWER created with warnings
+
+ ARTWORK had warnings

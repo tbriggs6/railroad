@@ -1,0 +1,96 @@
+
+**** 06/22/19 10:28:25 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ C:\orcad_projects\Railroad\raillroad-pspicefiles\schematic1\bias.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "bias.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\tbriggs\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "C:\orcad\libraries\pspice\TPS2051B_PSPICE_TRANS\tps2051b_sot235.lib" 
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 10m 0 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source RAILLROAD
+X_U1         0 N14428 MLV0603E31403T PARAMS: TOL=0
+R_R1         N14428 0  1k TC=0,0 
+V_V1         N14428 0 12Vdc
+V_V2         N14601 0  
++PULSE 0 1000 1m 20u 20u 1u 20m
+R_R2         N14601 N14428  1 TC=0,0 
+
+**** RESUMING bias.cir ****
+.END
+
+**** 06/22/19 10:28:25 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ C:\orcad_projects\Railroad\raillroad-pspicefiles\schematic1\bias.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N14428)   12.0000 (N14601)    0.0000 (X_U1.X8.3) 214.6E-12                     
+
+(X_U1.X8.4) 214.6E-12                 (X_U1.X8.5) 214.6E-12                     
+
+(X_U1.X8.6)    -.0215                 (X_U1.X8.7)    2.5520                 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -1.201E+01
+    V_V2         1.200E+01
+    X_U1.X8.V_V1  -2.146E-06
+
+    TOTAL POWER DISSIPATION   1.44E+02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 06/22/19 10:28:25 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ C:\orcad_projects\Railroad\raillroad-pspicefiles\schematic1\bias.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  License check-out time            =        3.97
+  Total job time (using Solver 1)   =         .05
+

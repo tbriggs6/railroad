@@ -1,0 +1,46 @@
+(---------------------------------------------------------------------)
+(                                                                     )
+(    Auto Silkscreen Log File                                         )
+(                                                                     )
+(    Drawing          : RAILLROAD.brd                                 )
+(    Software Version : 17.2S055                                      )
+(    Date/Time        : Sun Jun 23 10:58:43 2019                      )
+(                                                                     )
+(---------------------------------------------------------------------)
+
+
+Generating Auto Silkscreen for the top of the board.
+
+Copying all elements.
+
+Element to Pad clearance is 8.00
+Max Text displacement is 100.00
+Min Line Length is 4.00
+Allowing 0, 90, 180 and 270 degree text rotations.
+Text Allowed Under Components.
+Subclass Selections:
+ Board Geometry       : Silkscreen
+ Component Value      : None
+ Device Type          : None
+ Package Geometry     : Silkscreen
+ Reference Designator : Silkscreen
+ Tolerance            : None
+ User Part Number     : None
+
+Line segment from (3508.50, 6668.40) --> (3505.90, 6667.40) is too small.
+Line segment from (3450.00, 6742.50) --> (3447.20, 6744.50) is too small.
+Text string 'U6' is not at a suitable location
+(location: 5300.00, 2775.00)
+Text string 'U5' is not at a suitable location
+(location: 4900.00, 3575.00)
+Text string 'U2' is not at a suitable location
+(location: 4900.00, 4375.00)
+Text string 'U3' is not at a suitable location
+(location: 4900.00, 5175.00)
+Total segments less than 4.00, not copied: 2
+
+
+Total Failures: 4
+
+Log End
+

@@ -1,0 +1,40 @@
+FILE_TYPE = EXPANDEDPARTLIST;
+{ Using PSTWRITER 17.2.0 d001Jul-19-2019 at 13:19:02 }
+DIRECTIVES
+ PST_VERSION='PST_HDL_CENTRIC_VERSION_0';
+ ROOT_DRAWING='RAILLROAD';
+ POST_TIME='May 11 2019 05:12:43';
+ SOURCE_TOOL='CAPTURE_WRITER';
+END_DIRECTIVES;
+
+PART_NAME
+ D5 'LED_LED_T1_LED':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.SENSOR(SCH_1):INS133956@DISCRETE.LED.NORMAL(CHIPS)':
+ C_PATH='@raillroad.sensor(sch_1):ins133956@discrete.\led.normal\(chips)',
+ P_PATH='@raillroad.sensor(sch_1):page1_ins133956@discrete.\led.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ J3 '282834-3_CONN_282834-3_282834-3':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.SENSOR(SCH_1):INS129952@SHIPCSE.282834-3.NORMAL(CHIPS)':
+ C_PATH='@raillroad.sensor(sch_1):ins129952@shipcse.\282834-3.normal\(chips)',
+ P_PATH='@raillroad.sensor(sch_1):page1_ins129952@shipcse.\282834-3.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+PART_NAME
+ R12 'R_SMD_RES_1206_100K':;
+
+SECTION_NUMBER 1
+ '@RAILLROAD.SENSOR(SCH_1):INS133972@DISCRETE.R.NORMAL(CHIPS)':
+ C_PATH='@raillroad.sensor(sch_1):ins133972@discrete.\r.normal\(chips)',
+ P_PATH='@raillroad.sensor(sch_1):page1_ins133972@discrete.\r.normal\(chips)',
+ PRIM_FILE='.\pstchip.dat',
+ SECTION='';
+
+END.
